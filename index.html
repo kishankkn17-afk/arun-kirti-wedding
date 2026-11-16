@@ -249,134 +249,113 @@
   <canvas id="goldCanvas" class="fixed inset-0 pointer-events-none z-40"></canvas>
 
   <!-- ==========================================
-       3D ROYAL VELVET DOUBLE-DOOR GATE (INITIAL SCREEN)
+       3D ROYAL VELVET DOUBLE-DOOR GATE (RESPONSIVE)
   =========================================== -->
   <div id="royalGate" class="gate-Scene fixed inset-0 z-50 flex items-center justify-center overflow-hidden select-none">
     
     <!-- ================= LEFT VELVET DOOR ================= -->
-    <div class="gate-door-left velvet-texture w-1/2 h-full border-r-[3px] border-gold-500/80 relative flex items-center justify-center overflow-hidden">
+    <div class="gate-door-left velvet-texture w-1/2 h-full border-r-[3px] border-gold-500/80 relative flex items-center justify-end overflow-hidden">
       
       <!-- Outer Double Gold Filigree Frame -->
       <div class="absolute inset-2 sm:inset-5 border-2 border-gold-500/40 pointer-events-none"></div>
       <div class="absolute inset-3.5 sm:inset-7 border border-dashed border-gold-400/25 pointer-events-none"></div>
 
       <!-- Ornate Corner Jaali Brackets -->
-      <svg class="absolute top-3 left-3 sm:top-6 sm:left-6 w-12 h-12 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+      <svg class="absolute top-3 left-3 sm:top-6 sm:left-6 w-10 h-10 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
         <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z" opacity="0.85"/>
         <circle cx="28" cy="28" r="6"/><circle cx="48" cy="18" r="3.5"/><circle cx="18" cy="48" r="3.5"/>
       </svg>
-      <svg class="absolute bottom-3 left-3 sm:bottom-6 sm:left-6 w-12 h-12 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scaleY(-1);" viewBox="0 0 100 100" fill="currentColor">
+      <svg class="absolute bottom-3 left-3 sm:bottom-6 sm:left-6 w-10 h-10 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scaleY(-1);" viewBox="0 0 100 100" fill="currentColor">
         <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z" opacity="0.85"/>
         <circle cx="28" cy="28" r="6"/><circle cx="48" cy="18" r="3.5"/><circle cx="18" cy="48" r="3.5"/>
       </svg>
 
-      <!-- Brass Door Studs Along Seam -->
-      <div class="hidden sm:flex flex-col justify-between h-4/5 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-        <span class="w-2.5 h-2.5 rounded-full gold-foil-bg shadow-md"></span>
-        <span class="w-2.5 h-2.5 rounded-full gold-foil-bg shadow-md"></span>
-        <span class="w-2.5 h-2.5 rounded-full gold-foil-bg shadow-md"></span>
-        <span class="w-2.5 h-2.5 rounded-full gold-foil-bg shadow-md"></span>
-      </div>
-
-      <!-- LEFT DOOR AUSPICIOUS JHAROKHA PANEL (Fills Left Marked Space) -->
-      <div class="door-arch-panel rounded-t-full rounded-b-2xl w-28 sm:w-56 md:w-64 py-5 sm:py-8 px-2 sm:px-6 flex flex-col items-center justify-between relative -translate-x-6 sm:-translate-x-10 md:-translate-x-14 transition-transform duration-500">
+      <!-- LEFT DOOR AUSPICIOUS JHAROKHA PANEL (Fluid Sizing) -->
+      <div class="door-arch-panel rounded-t-full rounded-b-xl w-[42vw] max-w-[220px] py-4 sm:py-6 px-1.5 sm:px-4 flex flex-col items-center justify-between relative mr-1 sm:mr-3">
         <!-- Inner Arch Trim -->
-        <div class="absolute inset-1.5 rounded-t-full rounded-b-xl border border-dashed border-gold-400/35 pointer-events-none"></div>
+        <div class="absolute inset-1 rounded-t-full rounded-b-lg border border-dashed border-gold-400/30 pointer-events-none"></div>
 
         <!-- Hanging Swaying Brass Diya -->
-        <div class="sway-bell flex flex-col items-center -mt-3 mb-2">
-          <div class="w-0.5 h-4 sm:h-7 bg-gold-400/70"></div>
-          <svg class="w-8 h-8 sm:w-12 sm:h-12 drop-shadow-[0_0_10px_rgba(250,204,21,0.8)]" viewBox="0 0 64 64">
+        <div class="sway-bell flex flex-col items-center -mt-2 mb-1">
+          <div class="w-0.5 h-3 sm:h-6 bg-gold-400/70"></div>
+          <svg class="w-6 h-6 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" viewBox="0 0 64 64">
             <path class="diya-flame" d="M32 8 C27 18, 26 25, 32 31 C38 25, 37 18, 32 8 Z" fill="#fde047"/>
             <path class="diya-flame" d="M32 14 C29 20, 29 24, 32 29 C35 24, 35 20, 32 14 Z" fill="#ffffff"/>
             <path d="M14 34 Q32 40 50 34 C46 48, 39 52, 32 52 C25 52, 18 48, 14 34 Z" fill="#d4af37"/>
           </svg>
         </div>
 
-        <!-- Auspicious "SHUBH" Plaque & Swastika -->
-        <div class="text-center my-1">
-          <svg class="w-6 h-6 sm:w-8 sm:h-8 mx-auto text-gold-400 mb-1 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Auspicious "SHUBH" Plaque -->
+        <div class="text-center my-0.5">
+          <svg class="w-5 h-5 sm:w-7 sm:h-7 mx-auto text-gold-400 mb-0.5 drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 3v18M3 12h18M12 3h7M12 21H5M21 12v7M3 12V5"/>
             <circle cx="7.5" cy="7.5" r="1" fill="currentColor"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor"/>
             <circle cx="7.5" cy="16.5" r="1" fill="currentColor"/><circle cx="16.5" cy="16.5" r="1" fill="currentColor"/>
           </svg>
-          <span class="font-serif text-xs sm:text-lg font-bold gold-foil-text tracking-[0.25em] block">॥ SHUBH ॥</span>
+          <span class="font-serif text-[10px] sm:text-base font-bold gold-foil-text tracking-[0.2em] block">॥ SHUBH ॥</span>
         </div>
 
-        <!-- Intricate Mangal Kalash & Lotus Motif -->
-        <svg class="w-14 h-14 sm:w-24 sm:h-24 text-gold-400 my-1 sm:my-2 drop-shadow-[0_0_12px_rgba(212,175,55,0.35)]" viewBox="0 0 100 100" fill="currentColor">
-          <!-- Coconut & Mango Leaves -->
+        <!-- Mangal Kalash & Lotus Motif -->
+        <svg class="w-10 h-10 sm:w-20 sm:h-20 text-gold-400 my-1 drop-shadow-[0_0_10px_rgba(212,175,55,0.35)]" viewBox="0 0 100 100" fill="currentColor">
           <path d="M50 10 C42 18, 43 28, 50 32 C57 28, 58 18, 50 10 Z" fill="#fde047"/>
           <path d="M48 30 C32 22, 20 28, 18 38 C28 36, 38 34, 48 34 Z" opacity="0.85"/>
           <path d="M52 30 C68 22, 80 28, 82 38 C72 36, 62 34, 52 34 Z" opacity="0.85"/>
-          <!-- Kalash Neck & Pot -->
           <rect x="38" y="33" width="24" height="5" rx="2" fill="#fef08a"/>
           <path d="M34 40 L66 40 C78 52, 76 74, 50 78 C24 74, 22 52, 34 40 Z"/>
-          <!-- Swastika on Kalash -->
           <path d="M50 50v16M42 58h16" stroke="#460a10" stroke-width="2.5"/>
-          <!-- Base Pedestal -->
           <path d="M32 80 L68 80 L74 88 L26 88 Z" fill="#fef08a"/>
         </svg>
 
-        <!-- Royal Welcoming Gajraj / Peacock Flourish -->
-        <div class="w-full pt-2 border-t border-gold-500/30 flex items-center justify-center gap-1.5 text-gold-300/80">
-          <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.2em]">Mangal Parinay</span>
+        <div class="w-full pt-1.5 border-t border-gold-500/30 flex items-center justify-center text-gold-300/80">
+          <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.18em]">Mangal Parinay</span>
         </div>
       </div>
     </div>
 
     <!-- ================= RIGHT VELVET DOOR ================= -->
-    <div class="gate-door-right velvet-texture w-1/2 h-full border-l-[3px] border-gold-500/80 relative flex items-center justify-center overflow-hidden">
+    <div class="gate-door-right velvet-texture w-1/2 h-full border-l-[3px] border-gold-500/80 relative flex items-center justify-start overflow-hidden">
       
       <!-- Outer Double Gold Filigree Frame -->
       <div class="absolute inset-2 sm:inset-5 border-2 border-gold-500/40 pointer-events-none"></div>
       <div class="absolute inset-3.5 sm:inset-7 border border-dashed border-gold-400/25 pointer-events-none"></div>
 
       <!-- Ornate Corner Jaali Brackets -->
-      <svg class="absolute top-3 right-3 sm:top-6 sm:right-6 w-12 h-12 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scaleX(-1);" viewBox="0 0 100 100" fill="currentColor">
+      <svg class="absolute top-3 right-3 sm:top-6 sm:right-6 w-10 h-10 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scaleX(-1);" viewBox="0 0 100 100" fill="currentColor">
         <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z" opacity="0.85"/>
         <circle cx="28" cy="28" r="6"/><circle cx="48" cy="18" r="3.5"/><circle cx="18" cy="48" r="3.5"/>
       </svg>
-      <svg class="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scale(-1, -1);" viewBox="0 0 100 100" fill="currentColor">
+      <svg class="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 w-10 h-10 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scale(-1, -1);" viewBox="0 0 100 100" fill="currentColor">
         <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z" opacity="0.85"/>
         <circle cx="28" cy="28" r="6"/><circle cx="48" cy="18" r="3.5"/><circle cx="18" cy="48" r="3.5"/>
       </svg>
 
-      <!-- Brass Door Studs Along Seam -->
-      <div class="hidden sm:flex flex-col justify-between h-4/5 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
-        <span class="w-2.5 h-2.5 rounded-full gold-foil-bg shadow-md"></span>
-        <span class="w-2.5 h-2.5 rounded-full gold-foil-bg shadow-md"></span>
-        <span class="w-2.5 h-2.5 rounded-full gold-foil-bg shadow-md"></span>
-        <span class="w-2.5 h-2.5 rounded-full gold-foil-bg shadow-md"></span>
-      </div>
-
-      <!-- RIGHT DOOR AUSPICIOUS JHAROKHA PANEL (Fills Right Marked Space) -->
-      <div class="door-arch-panel rounded-t-full rounded-b-2xl w-28 sm:w-56 md:w-64 py-5 sm:py-8 px-2 sm:px-6 flex flex-col items-center justify-between relative translate-x-6 sm:translate-x-10 md:translate-x-14 transition-transform duration-500">
+      <!-- RIGHT DOOR AUSPICIOUS JHAROKHA PANEL (Fluid Sizing) -->
+      <div class="door-arch-panel rounded-t-full rounded-b-xl w-[42vw] max-w-[220px] py-4 sm:py-6 px-1.5 sm:px-4 flex flex-col items-center justify-between relative ml-1 sm:ml-3">
         <!-- Inner Arch Trim -->
-        <div class="absolute inset-1.5 rounded-t-full rounded-b-xl border border-dashed border-gold-400/35 pointer-events-none"></div>
+        <div class="absolute inset-1 rounded-t-full rounded-b-lg border border-dashed border-gold-400/30 pointer-events-none"></div>
 
         <!-- Hanging Swaying Brass Diya -->
-        <div class="sway-bell flex flex-col items-center -mt-3 mb-2" style="animation-delay: -1.9s;">
-          <div class="w-0.5 h-4 sm:h-7 bg-gold-400/70"></div>
-          <svg class="w-8 h-8 sm:w-12 sm:h-12 drop-shadow-[0_0_10px_rgba(250,204,21,0.8)]" viewBox="0 0 64 64">
+        <div class="sway-bell flex flex-col items-center -mt-2 mb-1" style="animation-delay: -1.9s;">
+          <div class="w-0.5 h-3 sm:h-6 bg-gold-400/70"></div>
+          <svg class="w-6 h-6 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" viewBox="0 0 64 64">
             <path class="diya-flame" d="M32 8 C27 18, 26 25, 32 31 C38 25, 37 18, 32 8 Z" fill="#fde047"/>
             <path class="diya-flame" d="M32 14 C29 20, 29 24, 32 29 C35 24, 35 20, 32 14 Z" fill="#ffffff"/>
             <path d="M14 34 Q32 40 50 34 C46 48, 39 52, 32 52 C25 52, 18 48, 14 34 Z" fill="#d4af37"/>
           </svg>
         </div>
 
-        <!-- Auspicious "LABH" Plaque & Swastika -->
-        <div class="text-center my-1">
-          <svg class="w-6 h-6 sm:w-8 sm:h-8 mx-auto text-gold-400 mb-1 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Auspicious "LABH" Plaque -->
+        <div class="text-center my-0.5">
+          <svg class="w-5 h-5 sm:w-7 sm:h-7 mx-auto text-gold-400 mb-0.5 drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 3v18M3 12h18M12 3h7M12 21H5M21 12v7M3 12V5"/>
             <circle cx="7.5" cy="7.5" r="1" fill="currentColor"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor"/>
             <circle cx="7.5" cy="16.5" r="1" fill="currentColor"/><circle cx="16.5" cy="16.5" r="1" fill="currentColor"/>
           </svg>
-          <span class="font-serif text-xs sm:text-lg font-bold gold-foil-text tracking-[0.25em] block">॥ LABH ॥</span>
+          <span class="font-serif text-[10px] sm:text-base font-bold gold-foil-text tracking-[0.2em] block">॥ LABH ॥</span>
         </div>
 
-        <!-- Intricate Mangal Kalash & Lotus Motif -->
-        <svg class="w-14 h-14 sm:w-24 sm:h-24 text-gold-400 my-1 sm:my-2 drop-shadow-[0_0_12px_rgba(212,175,55,0.35)]" viewBox="0 0 100 100" fill="currentColor">
+        <!-- Mangal Kalash & Lotus Motif -->
+        <svg class="w-10 h-10 sm:w-20 sm:h-20 text-gold-400 my-1 drop-shadow-[0_0_10px_rgba(212,175,55,0.35)]" viewBox="0 0 100 100" fill="currentColor">
           <path d="M50 10 C42 18, 43 28, 50 32 C57 28, 58 18, 50 10 Z" fill="#fde047"/>
           <path d="M48 30 C32 22, 20 28, 18 38 C28 36, 38 34, 48 34 Z" opacity="0.85"/>
           <path d="M52 30 C68 22, 80 28, 82 38 C72 36, 62 34, 52 34 Z" opacity="0.85"/>
@@ -386,104 +365,87 @@
           <path d="M32 80 L68 80 L74 88 L26 88 Z" fill="#fef08a"/>
         </svg>
 
-        <!-- Sub-Caption -->
-        <div class="w-full pt-2 border-t border-gold-500/30 flex items-center justify-center gap-1.5 text-gold-300/80">
-          <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.2em]">Shubh Muhurat</span>
+        <div class="w-full pt-1.5 border-t border-gold-500/30 flex items-center justify-center text-gold-300/80">
+          <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.18em]">Shubh Muhurat</span>
         </div>
       </div>
     </div>
 
-    <!-- ================= CENTRAL ROTATING CHAKRA & ROYAL SEAL ================= -->
-    <div id="openSealBtn" class="gate-seal absolute z-20 flex flex-col items-center cursor-pointer transition-all duration-700 group">
+    <!-- ================= CENTRAL ROTATING CHAKRA & ROYAL SEAL (AUTO-SCALING) ================= -->
+    <div id="openSealBtn" class="gate-seal absolute z-20 flex flex-col items-center justify-center cursor-pointer transition-all duration-700 group px-2 text-center w-full max-w-sm">
       
-      <!-- GLOWING SHREE GANESHAY NAMAH BANNER (Upgraded Font & Divine Glow) -->
-      <div class="mb-5 sm:mb-7 flex flex-col items-center">
-        <!-- Auspicious Ganesha / Lotus Mukut Emblem -->
-        <div class="relative flex items-center justify-center mb-1.5">
-          <div class="w-12 h-12 rounded-full bg-gold-400/25 blur-md absolute animate-pulse"></div>
-          <svg class="w-9 h-9 sm:w-11 sm:h-11 text-gold-300 relative z-10 drop-shadow-[0_0_12px_rgba(250,204,21,0.9)]" viewBox="0 0 64 64" fill="currentColor">
-            <!-- Crown / Mukut -->
+      <!-- GLOWING SHREE GANESHAY NAMAH BANNER -->
+      <div class="mb-3 sm:mb-5 flex flex-col items-center">
+        <div class="relative flex items-center justify-center mb-1">
+          <div class="w-10 h-10 rounded-full bg-gold-400/25 blur-md absolute animate-pulse"></div>
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 text-gold-300 relative z-10 drop-shadow-[0_0_12px_rgba(250,204,21,0.9)]" viewBox="0 0 64 64" fill="currentColor">
             <path d="M32 4 L24 18 L40 18 Z"/>
             <path d="M20 20 L44 20 L42 25 L22 25 Z"/>
-            <!-- Ganesha Stylized Ears & Trunk -->
             <path d="M20 27 C10 25, 8 38, 18 42 C16 36, 18 30, 22 29 Z" opacity="0.85"/>
             <path d="M44 27 C54 25, 56 38, 46 42 C48 36, 46 30, 42 29 Z" opacity="0.85"/>
             <path d="M25 27 C25 42, 28 52, 38 52 C42 52, 42 47, 38 47 C34 47, 34 38, 39 27 Z"/>
-            <!-- Tilak -->
             <line x1="29" y1="30" x2="35" y2="30" stroke="#460a10" stroke-width="2"/>
             <line x1="29" y1="33" x2="35" y2="33" stroke="#460a10" stroke-width="2"/>
             <circle cx="32" cy="24" r="1.8" fill="#ef4444"/>
           </svg>
         </div>
 
-        <!-- Glowing Royal Arch Pill for Shree Ganeshay Namah -->
-        <div class="px-5 py-1.5 sm:px-7 sm:py-2 rounded-full bg-royal-950/90 border-2 border-gold-400/80 shadow-[0_0_25px_rgba(250,204,21,0.45)] flex items-center gap-2.5">
-          <span class="text-gold-400 text-xs sm:text-sm">❖</span>
-          <span class="font-serif text-xs sm:text-base md:text-lg font-bold tracking-[0.22em] divine-glow-text uppercase">
+        <div class="px-4 py-1.5 sm:px-6 sm:py-2 rounded-full bg-royal-950/95 border-2 border-gold-400/80 shadow-[0_0_25px_rgba(250,204,21,0.45)] flex items-center gap-2">
+          <span class="text-gold-400 text-xs">❖</span>
+          <span class="font-serif text-[11px] sm:text-sm md:text-base font-bold tracking-[0.18em] divine-glow-text uppercase">
             ॥ Shree Ganeshay Namah ॥
           </span>
-          <span class="text-gold-400 text-xs sm:text-sm">❖</span>
+          <span class="text-gold-400 text-xs">❖</span>
         </div>
       </div>
       
-      <!-- CENTER ROTATING WHEEL + MEDALLION CONTAINER -->
-      <div class="relative w-56 h-56 sm:w-72 sm:h-72 flex items-center justify-center">
+      <!-- CENTER FLUID ROTATING WHEEL + MEDALLION -->
+      <div class="relative w-[55vw] h-[55vw] max-w-[240px] max-h-[240px] sm:max-w-[280px] sm:max-h-[280px] flex items-center justify-center my-1">
         
-        <!-- Ambient Golden Aura Behind Wheel -->
-        <div class="absolute inset-4 rounded-full bg-gold-500/20 blur-2xl pointer-events-none"></div>
+        <div class="absolute inset-2 rounded-full bg-gold-500/20 blur-xl pointer-events-none"></div>
 
-        <!-- RING 1: Outer Rotating 16-Petal Surya Mandala Wheel (Clockwise) -->
+        <!-- Outer Rotating Wheel -->
         <svg class="spin-cw-slow absolute inset-0 w-full h-full text-gold-400/75 drop-shadow-[0_0_12px_rgba(212,175,55,0.45)] pointer-events-none" viewBox="0 0 200 200" fill="none" stroke="currentColor">
           <circle cx="100" cy="100" r="96" stroke-width="1" stroke-dasharray="4 4"/>
           <circle cx="100" cy="100" r="90" stroke-width="1.5"/>
           <circle cx="100" cy="100" r="76" stroke-width="1" stroke-dasharray="2 3"/>
-          <!-- Ornate Mandala Spokes & Lotus Petals -->
           <g stroke-width="1.2">
             <path d="M100 4 L106 22 L100 16 L94 22 Z" fill="currentColor"/>
             <path d="M100 196 L106 178 L100 184 L94 178 Z" fill="currentColor"/>
             <path d="M4 100 L22 106 L16 100 L22 94 Z" fill="currentColor"/>
             <path d="M196 100 L178 106 L184 100 L178 94 Z" fill="currentColor"/>
-            <path d="M32 32 L48 40 L40 40 L40 48 Z" fill="currentColor"/>
-            <path d="M168 32 L152 40 L160 40 L160 48 Z" fill="currentColor"/>
-            <path d="M32 168 L48 160 L40 160 L40 152 Z" fill="currentColor"/>
-            <path d="M168 168 L152 160 L160 160 L160 152 Z" fill="currentColor"/>
             <line x1="100" y1="10" x2="100" y2="190" stroke-opacity="0.45"/>
             <line x1="10" y1="100" x2="190" y2="100" stroke-opacity="0.45"/>
-            <line x1="36" y1="36" x2="164" y2="164" stroke-opacity="0.45"/>
-            <line x1="164" y1="36" x2="36" y2="164" stroke-opacity="0.45"/>
-            <!-- Geometric Starburst Petals -->
             <rect x="42" y="42" width="116" height="116" rx="8" stroke-opacity="0.5"/>
             <rect x="42" y="42" width="116" height="116" rx="8" transform="rotate(45 100 100)" stroke-opacity="0.5"/>
           </g>
         </svg>
 
-        <!-- RING 2: Middle Counter-Rotating Geometric Chakra (Counter-Clockwise) -->
-        <svg class="spin-ccw-med absolute w-44 h-44 sm:w-56 sm:h-56 text-gold-300/80 pointer-events-none" viewBox="0 0 160 160" fill="none" stroke="currentColor">
+        <!-- Counter-Rotating Inner Chakra -->
+        <svg class="spin-ccw-med absolute w-[42vw] h-[42vw] max-w-[180px] max-h-[180px] text-gold-300/80 pointer-events-none" viewBox="0 0 160 160" fill="none" stroke="currentColor">
           <circle cx="80" cy="80" r="74" stroke-width="2" stroke-dasharray="8 6"/>
-          <circle cx="80" cy="80" r="68" stroke-width="1"/>
           <polygon points="80,8 98,62 152,80 98,98 80,152 62,98 8,80 62,62" stroke-width="1.2" fill="rgba(212,175,55,0.06)"/>
           <polygon points="80,8 98,62 152,80 98,98 80,152 62,98 8,80 62,62" stroke-width="1.2" transform="rotate(45 80 80)"/>
         </svg>
 
-        <!-- CENTER ROYAL MEDALLION (Stationary Text + Spinning Beaded Rim) -->
-        <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full gold-foil-bg p-1.5 shadow-[0_0_50px_rgba(212,175,55,0.75)] group-hover:scale-105 transition-transform duration-300 flex items-center justify-center z-10">
-          <div class="w-full h-full rounded-full bg-royal-950 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden">
-            <!-- Spinning Beaded Inner Rim -->
-            <div class="spin-cw-fast absolute inset-1.5 rounded-full border-2 border-dashed border-gold-400/90 pointer-events-none"></div>
+        <!-- CENTER MEDALLION -->
+        <div class="relative w-[34vw] h-[34vw] max-w-[140px] max-h-[140px] sm:max-w-[160px] sm:max-h-[160px] rounded-full gold-foil-bg p-1 shadow-[0_0_40px_rgba(212,175,55,0.75)] group-hover:scale-105 transition-transform duration-300 flex items-center justify-center z-10">
+          <div class="w-full h-full rounded-full bg-royal-950 flex flex-col items-center justify-center p-2 text-center relative overflow-hidden">
+            <div class="spin-cw-fast absolute inset-1 rounded-full border-2 border-dashed border-gold-400/90 pointer-events-none"></div>
             
-            <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.28em] text-gold-300/90 mb-1">Shubh Vivah</span>
-            <span class="font-serif text-2xl sm:text-3xl font-bold gold-foil-text tracking-wider drop-shadow">A &amp; K</span>
-            <span class="w-12 h-px bg-gold-400/60 my-1.5"></span>
-            <span class="text-[10px] sm:text-xs font-body italic text-gold-200 tracking-widest">13 . 12 . 2026</span>
+            <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.25em] text-gold-300/90 mb-0.5">Shubh Vivah</span>
+            <span class="font-serif text-xl sm:text-2xl font-bold gold-foil-text tracking-wider drop-shadow">A &amp; K</span>
+            <span class="w-8 h-px bg-gold-400/60 my-1"></span>
+            <span class="text-[9px] sm:text-[11px] font-body italic text-gold-200 tracking-widest">13 . 12 . 2026</span>
           </div>
         </div>
 
       </div>
 
       <!-- Tap Instruction Button -->
-      <div class="mt-5 px-6 py-2.5 rounded-full bg-royal-950/95 border-2 border-gold-400/70 shadow-[0_0_25px_rgba(0,0,0,0.9)] flex items-center gap-2.5 group-hover:border-gold-300 transition-all">
-        <span class="w-2.5 h-2.5 rounded-full bg-gold-400 animate-ping"></span>
-        <span class="text-xs uppercase tracking-[0.25em] text-gold-200 font-semibold">Tap Royal Seal to Open</span>
+      <div class="mt-4 px-5 py-2 rounded-full bg-royal-950/95 border-2 border-gold-400/70 shadow-[0_0_20px_rgba(0,0,0,0.9)] flex items-center gap-2 group-hover:border-gold-300 transition-all">
+        <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
+        <span class="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-gold-200 font-semibold">Tap Royal Seal to Open</span>
       </div>
     </div>
   </div>
