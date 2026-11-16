@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- STRICT VIEWPORT: Prevents squeezing and auto-zooming on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   
   <!-- WhatsApp & Social Media Preview Tags -->
@@ -91,7 +90,6 @@
         <svg class="w-3 h-3 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
       </p>
       
-      <!-- Scaled fonts for mobile -->
       <h1 class="text-4xl sm:text-5xl md:text-7xl font-serif text-white mb-4 leading-tight drop-shadow-lg">
         Arun <br class="md:hidden"><span class="text-gold-400 italic font-light px-2 sm:px-4">&amp;</span><br class="md:hidden"> Kirti
       </h1>
@@ -109,28 +107,29 @@
 
   <!-- 2. COUNTDOWN -->
   <section class="py-16 sm:py-20 bg-emerald-950 relative border-b border-gold-900/30">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+    <div class="max-w-4xl mx-auto px-2 sm:px-6 relative z-10">
       <div class="text-center mb-10 sm:mb-12 reveal">
         <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-gold-300 mb-3">Awaiting the Day</h2>
         <div class="w-12 h-px bg-gold-500/50 mx-auto"></div>
       </div>
       
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
-        <div class="glass flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl reveal transition-transform hover:scale-105">
-          <span id="cd-days" class="font-serif text-3xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2">00</span>
-          <span class="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.2em] text-gold-400 font-semibold">Days</span>
+      <!-- Changed from grid-cols-2 to grid-cols-4 and reduced gap for mobile to keep them in one row -->
+      <div class="grid grid-cols-4 gap-2 sm:gap-6">
+        <div class="glass flex flex-col items-center justify-center p-2 sm:p-6 rounded-xl sm:rounded-2xl reveal transition-transform hover:scale-105">
+          <span id="cd-days" class="font-serif text-2xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2">00</span>
+          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-gold-400 font-semibold">Days</span>
         </div>
-        <div class="glass flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 100ms;">
-          <span id="cd-hours" class="font-serif text-3xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2">00</span>
-          <span class="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.2em] text-gold-400 font-semibold">Hours</span>
+        <div class="glass flex flex-col items-center justify-center p-2 sm:p-6 rounded-xl sm:rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 100ms;">
+          <span id="cd-hours" class="font-serif text-2xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2">00</span>
+          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-gold-400 font-semibold">Hours</span>
         </div>
-        <div class="glass flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 200ms;">
-          <span id="cd-minutes" class="font-serif text-3xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2">00</span>
-          <span class="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.2em] text-gold-400 font-semibold">Mins</span>
+        <div class="glass flex flex-col items-center justify-center p-2 sm:p-6 rounded-xl sm:rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 200ms;">
+          <span id="cd-minutes" class="font-serif text-2xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2">00</span>
+          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-gold-400 font-semibold">Mins</span>
         </div>
-        <div class="glass flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 300ms;">
-          <span id="cd-seconds" class="font-serif text-3xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2">00</span>
-          <span class="text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.2em] text-gold-400 font-semibold">Secs</span>
+        <div class="glass flex flex-col items-center justify-center p-2 sm:p-6 rounded-xl sm:rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 300ms;">
+          <span id="cd-seconds" class="font-serif text-2xl sm:text-4xl md:text-5xl text-white mb-1 sm:mb-2">00</span>
+          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-gold-400 font-semibold">Secs</span>
         </div>
       </div>
     </div>
