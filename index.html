@@ -1,404 +1,383 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, MapPin, Heart, Clock, Send, Cloud, Shirt, Sparkles, Map } from 'lucide-react';
-
-// --- Custom Hooks ---
-
-// Hook to detect when an element scrolls into the viewport (for animations)
-function useElementOnScreen(options) {
-  const containerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(entry.target);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- WhatsApp & Social Media Preview Tags -->
+  <meta property="og:title" content="Arun & Kirti — You're Invited!" />
+  <meta property="og:description" content="Join us to celebrate the wedding of Arun Kumar and Kirti on 13 December 2026 in New Delhi." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&h=630&fit=crop" />
+  <meta property="og:type" content="website" />
+  
+  <title>Wedding Invitation | Arun & Kirti</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            gold: { 300: '#fde047', 400: '#facc15', 500: '#eab308', 600: '#ca8a04' }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          }
+        }
       }
-    }, options);
+    }
+  </script>
 
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
-    };
-  }, [containerRef, options]);
-
-  return [containerRef, isVisible];
-}
-
-// --- Reusable Components ---
-
-// Wrapper to fade elements in smoothly as you scroll
-const FadeIn = ({ children, delay = '', direction = 'up' }) => {
-  const [ref, isVisible] = useElementOnScreen({ threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  let translateClass = 'translate-y-10';
-  if (direction === 'left') translateClass = '-translate-x-10';
-  if (direction === 'right') translateClass = 'translate-x-10';
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #022c22; color: #f3f4f6; overflow-x: hidden; scroll-behavior: smooth; }
+    h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #022c22; }
+    ::-webkit-scrollbar-thumb { background: #facc15; border-radius: 4px; }
+    
+    /* Glassmorphism Effect */
+    .glass { 
+      background: rgba(6, 78, 59, 0.45); 
+      backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px); 
+      border: 1px solid rgba(250, 204, 21, 0.25); 
+    }
+    
+    /* Scroll Reveal Animations */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s ease-out; }
+    .reveal-left.active { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s ease-out; }
+    .reveal-right.active { opacity: 1; transform: translateX(0); }
 
-  return (
-    <div 
-      ref={ref} 
-      className={`transition-all duration-1000 transform ${
-        isVisible ? 'opacity-100 translate-y-0 translate-x-0' : `opacity-0 ${translateClass}`
-      } ${delay}`}
-    >
-      {children}
+    /* Timeline Line */
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, #eab308, transparent);
+      transform: translateX(-50%);
+    }
+    @media (max-width: 768px) {
+      .timeline-line::before { left: 24px; transform: none; }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-gold-300 selection:text-emerald-950">
+
+  <!-- 1. HERO SECTION -->
+  <section class="relative min-h-screen flex items-center justify-center p-6">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&fit=crop" alt="Wedding Background" class="w-full h-full object-cover opacity-30">
+      <div class="absolute inset-0 bg-gradient-to-b from-emerald-950/60 to-emerald-950 mix-blend-multiply"></div>
     </div>
-  );
-};
 
-// --- Main Application ---
+    <div class="glass relative z-10 p-10 md:p-16 rounded-3xl max-w-2xl w-full text-center shadow-2xl reveal active">
+      <p class="text-gold-400 tracking-[0.3em] uppercase text-sm mb-6 flex items-center justify-center gap-3 font-semibold">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        You are invited
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      </p>
+      <h1 class="text-5xl md:text-7xl font-serif text-white mb-4 leading-tight drop-shadow-lg">
+        Arun <br class="md:hidden"><span class="text-gold-400 italic font-light px-4">&amp;</span><br class="md:hidden"> Kirti
+      </h1>
+      <div class="w-24 h-[1px] bg-gold-500/50 mx-auto my-8"></div>
+      <p class="text-xl md:text-2xl font-serif text-gray-200 tracking-wider">13th December 2026</p>
+      
+      <div class="mt-8 flex items-center justify-center gap-4 text-sm font-light text-gold-300/60">
+        <span class="w-16 h-px bg-gradient-to-r from-transparent to-gold-400/50"></span>
+        <p class="italic font-serif text-lg text-gold-200">“Two souls, one heart.”</p>
+        <span class="w-16 h-px bg-gradient-to-l from-transparent to-gold-400/50"></span>
+      </div>
+    </div>
+  </section>
 
-export default function WeddingApp() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  
-  // State for Virtual Blessing Wall
-  const [blessingName, setBlessingName] = useState('');
-  const [blessingText, setBlessingText] = useState('');
-  const [blessings, setBlessings] = useState([
-    { id: 1, name: 'Rahul & Family', text: 'Wishing you both a lifetime of eternal love and endless joy! Can\'t wait to celebrate.' },
-    { id: 2, name: 'Priya', text: 'So incredibly excited for the big day! You two are absolutely perfect together. ❤️' },
-    { id: 3, name: 'Aman Verma', text: 'May your journey ahead be as beautiful as the love you share today. God bless!' }
-  ]);
+  <!-- 2. COUNTDOWN -->
+  <section class="py-20 bg-emerald-950 relative border-b border-gold-900/30">
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12 reveal">
+        <h2 class="font-serif text-3xl md:text-4xl text-gold-300 mb-3">Awaiting the Day</h2>
+        <div class="w-12 h-px bg-gold-500/50 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="glass flex flex-col items-center justify-center p-6 rounded-2xl reveal transition-transform hover:scale-105">
+          <span id="cd-days" class="font-serif text-4xl md:text-5xl text-white mb-2">00</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-gold-400 font-semibold">Days</span>
+        </div>
+        <div class="glass flex flex-col items-center justify-center p-6 rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 100ms;">
+          <span id="cd-hours" class="font-serif text-4xl md:text-5xl text-white mb-2">00</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-gold-400 font-semibold">Hours</span>
+        </div>
+        <div class="glass flex flex-col items-center justify-center p-6 rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 200ms;">
+          <span id="cd-minutes" class="font-serif text-4xl md:text-5xl text-white mb-2">00</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-gold-400 font-semibold">Mins</span>
+        </div>
+        <div class="glass flex flex-col items-center justify-center p-6 rounded-2xl reveal transition-transform hover:scale-105" style="transition-delay: 300ms;">
+          <span id="cd-seconds" class="font-serif text-4xl md:text-5xl text-white mb-2">00</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-gold-400 font-semibold">Secs</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Target Wedding Date: 13 Dec 2026, 19:00 (7:00 PM)
-  const targetDate = new Date('2026-12-13T19:00:00').getTime();
+  <!-- 3. ANIMATED WEDDING JOURNEY (TIMELINE) -->
+  <section class="py-24 px-6 bg-gradient-to-b from-emerald-950 to-[#033626] relative overflow-hidden">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-20 reveal">
+        <h2 class="font-serif text-4xl md:text-5xl text-gold-300 mb-4">Wedding Journey</h2>
+        <p class="text-emerald-200/70 font-light tracking-wider uppercase text-sm">Sunday, 13 December 2026</p>
+      </div>
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+      <div class="max-w-4xl mx-auto relative timeline-line">
+        <!-- Event 1 -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-16 relative pl-16 md:pl-0">
+          <div class="w-full md:w-[45%] md:text-right reveal-left">
+            <div class="glass p-6 md:p-8 rounded-2xl hover:border-gold-400/50 transition-colors">
+              <span class="text-gold-400 font-semibold tracking-widest text-sm mb-2 block uppercase">7:00 PM</span>
+              <h3 class="font-serif text-2xl text-white mb-2">Baraat Swagat</h3>
+              <p class="text-emerald-100/70 font-light leading-relaxed text-sm md:text-base">Welcoming the groom and his family with music, joy, and dancing.</p>
+            </div>
+          </div>
+          <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-emerald-900 text-gold-400 flex items-center justify-center z-10 border-2 border-gold-400 shadow-[0_0_15px_rgba(250,204,21,0.3)]">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          </div>
+          <div class="hidden md:block w-[45%]"></div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="flex flex-col md:flex-row-reverse items-start md:items-center justify-between mb-16 relative pl-16 md:pl-0">
+          <div class="w-full md:w-[45%] md:text-left reveal-right">
+            <div class="glass p-6 md:p-8 rounded-2xl hover:border-gold-400/50 transition-colors">
+              <span class="text-gold-400 font-semibold tracking-widest text-sm mb-2 block uppercase">9:00 PM</span>
+              <h3 class="font-serif text-2xl text-white mb-2">Varmala</h3>
+              <p class="text-emerald-100/70 font-light leading-relaxed text-sm md:text-base">The beautiful exchange of floral garlands signifying acceptance and love.</p>
+            </div>
+          </div>
+          <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-emerald-900 text-gold-400 flex items-center justify-center z-10 border-2 border-gold-400 shadow-[0_0_15px_rgba(250,204,21,0.3)]">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <div class="hidden md:block w-[45%]"></div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between relative pl-16 md:pl-0">
+          <div class="w-full md:w-[45%] md:text-right reveal-left">
+            <div class="glass p-6 md:p-8 rounded-2xl hover:border-gold-400/50 transition-colors">
+              <span class="text-gold-400 font-semibold tracking-widest text-sm mb-2 block uppercase">10:30 PM Onwards</span>
+              <h3 class="font-serif text-2xl text-white mb-2">Phere & Dinner</h3>
+              <p class="text-emerald-100/70 font-light leading-relaxed text-sm md:text-base">Sacred vows around the holy fire, followed by a grand celebratory feast.</p>
+            </div>
+          </div>
+          <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-emerald-900 text-gold-400 flex items-center justify-center z-10 border-2 border-gold-400 shadow-[0_0_15px_rgba(250,204,21,0.3)]">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="hidden md:block w-[45%]"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. VENUE & STYLE CONCIERGE -->
+  <section class="py-24 px-6 bg-[#033626] relative border-t border-emerald-800/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <h2 class="font-serif text-4xl md:text-5xl text-gold-300 mb-4">Guest Concierge</h2>
+        <div class="w-16 h-px bg-gold-400/30 mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        <!-- The Venue -->
+        <div class="glass p-8 md:p-10 rounded-3xl flex flex-col justify-center relative overflow-hidden reveal-left">
+          <div class="absolute top-0 right-0 p-8 opacity-10 text-gold-300">
+            <svg class="w-32 h-32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="z-10">
+            <div class="w-12 h-12 rounded-full bg-gold-300/10 text-gold-400 flex items-center justify-center mb-6 border border-gold-300/30">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+            </div>
+            <h3 class="font-serif text-3xl text-white mb-2">The Venue</h3>
+            <h4 class="text-xl text-gold-300 font-medium mb-4">Karan Vatika</h4>
+            <p class="text-emerald-100/70 font-light leading-relaxed mb-8 max-w-sm">
+              Lawn No. 2, Rishal Garden,<br>
+              Najafgarh–Nangloi Road,<br>
+              New Delhi – 110041, India
+            </p>
+            <a href="https://maps.google.com/?cid=13762507825252838880" target="_blank" class="inline-flex px-6 py-3 rounded-full bg-gold-400 text-emerald-950 font-semibold tracking-wide hover:bg-gold-300 transition-colors items-center gap-2 text-sm shadow-[0_4px_14px_rgba(250,204,21,0.4)]">
+              View on Map
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Style & Comfort -->
+        <div class="flex flex-col gap-8 reveal-right">
+          <div class="glass p-8 rounded-3xl flex items-start gap-5">
+            <div class="w-12 h-12 rounded-full bg-gold-300/10 text-gold-400 flex items-center justify-center flex-shrink-0 border border-gold-300/30">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl text-white mb-2">Dress Code</h3>
+              <p class="text-gold-200/90 font-medium text-sm mb-2">Elegant Traditional</p>
+              <p class="text-emerald-100/60 font-light text-sm leading-relaxed">We request our guests to grace the occasion in their finest traditional or Indo-Western attire.</p>
+            </div>
+          </div>
+          
+          <div class="glass p-8 rounded-3xl flex items-start gap-5">
+            <div class="w-12 h-12 rounded-full bg-gold-300/10 text-gold-400 flex items-center justify-center flex-shrink-0 border border-gold-300/30">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl text-white mb-2">Weather Note</h3>
+              <p class="text-emerald-100/60 font-light text-sm leading-relaxed">December in Delhi is pleasantly chilly. We highly recommend bringing a light shawl, stole, or jacket to stay comfortable during the evening festivities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. VIRTUAL BLESSING WALL -->
+  <section class="py-24 px-6 bg-emerald-950 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="text-center mb-16 reveal">
+        <h2 class="font-serif text-4xl md:text-5xl text-gold-300 mb-4">Virtual Blessing Wall</h2>
+        <p class="text-emerald-200/70 font-light max-w-2xl mx-auto">Leave a note, a wish, or a piece of advice for the couple as they embark on this beautiful new journey together.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <!-- Input Form -->
+        <div class="lg:col-span-5 sticky top-8 reveal-left">
+          <div class="glass p-8 rounded-3xl shadow-2xl">
+            <h3 class="font-serif text-2xl text-white mb-6">Send Your Love</h3>
+            <form id="blessingForm" class="space-y-5">
+              <div>
+                <label class="block text-sm font-medium text-gold-100/80 mb-2">Your Name</label>
+                <input type="text" id="guestName" required class="w-full px-4 py-3 rounded-xl bg-emerald-950/50 border border-emerald-700 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 outline-none transition-all text-white placeholder-emerald-100/30" placeholder="E.g. Mr. & Mrs. Sharma">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gold-100/80 mb-2">Your Wish</label>
+                <textarea id="guestMessage" rows="4" required class="w-full px-4 py-3 rounded-xl bg-emerald-950/50 border border-emerald-700 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 outline-none transition-all text-white placeholder-emerald-100/30 resize-none" placeholder="Write a beautiful message..."></textarea>
+              </div>
+              <button type="submit" class="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gold-400 text-emerald-950 font-semibold hover:bg-gold-500 transition-colors shadow-[0_4px_14px_rgba(250,204,21,0.2)] mt-4">
+                Post Blessing 
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Display Blessings Grid -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6" id="blessingContainer">
+          <!-- Pre-filled examples -->
+          <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg reveal">
+            <svg class="w-4 h-4 text-gold-400/60 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <p class="text-emerald-50/90 font-light leading-relaxed mb-6 italic text-sm">"Wishing you both a lifetime of eternal love and endless joy! Can't wait to celebrate."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-emerald-800 text-gold-200 flex items-center justify-center font-serif text-sm border border-emerald-600">R</div>
+              <span class="text-gold-200/90 font-medium text-sm tracking-wide">Rahul & Family</span>
+            </div>
+          </div>
+          
+          <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg reveal" style="transition-delay: 100ms;">
+            <svg class="w-4 h-4 text-gold-400/60 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <p class="text-emerald-50/90 font-light leading-relaxed mb-6 italic text-sm">"May your journey ahead be as beautiful as the love you share today. God bless!"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-emerald-800 text-gold-200 flex items-center justify-center font-serif text-sm border border-emerald-600">A</div>
+              <span class="text-gold-200/90 font-medium text-sm tracking-wide">Aman Verma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-16 bg-[#022c22] border-t border-emerald-900 text-center relative z-10">
+    <div class="font-serif text-4xl text-gold-300 mb-6">A <span class="text-emerald-600 px-2">&amp;</span> K</div>
+    <p class="text-emerald-200/40 text-xs font-light uppercase tracking-[0.3em]">Forever Begins Here</p>
+  </footer>
+
+  <script>
+    // 1. Countdown Logic (Target: 13 Dec 2026, 7:00 PM)
+    const targetDate = new Date('2026-12-13T19:00:00').getTime();
+    
+    const timer = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
       if (distance < 0) {
-        clearInterval(interval);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      } else {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        });
+        clearInterval(timer);
+        document.getElementById('cd-days').innerText = '00';
+        document.getElementById('cd-hours').innerText = '00';
+        document.getElementById('cd-minutes').innerText = '00';
+        document.getElementById('cd-seconds').innerText = '00';
+        return;
       }
+
+      document.getElementById('cd-days').innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      document.getElementById('cd-hours').innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      document.getElementById('cd-minutes').innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      document.getElementById('cd-seconds').innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
     }, 1000);
 
-    return () => clearInterval(interval);
-  }, [targetDate]);
+    // 2. Scroll Reveal Logic
+    const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
 
-  const handleBlessingSubmit = (e) => {
-    e.preventDefault();
-    if (!blessingName.trim() || !blessingText.trim()) return;
-    
-    const newBlessing = {
-      id: Date.now(),
-      name: blessingName,
-      text: blessingText
-    };
-    
-    // Add to top of the list
-    setBlessings([newBlessing, ...blessings]);
-    setBlessingName('');
-    setBlessingText('');
-  };
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
-  return (
-    <div className="font-sans text-amber-50 antialiased bg-emerald-950 overflow-x-hidden selection:bg-amber-300 selection:text-emerald-950">
-      {/* Inject custom fonts and hide scrollbar for cleaner look */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .font-sans { font-family: 'Inter', sans-serif; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #022c22; } /* emerald-950 */
-        ::-webkit-scrollbar-thumb { background: #fcd34d; border-radius: 4px; } /* amber-300 */
-      `}} />
+    // 3. Blessing Wall Form Logic
+    document.getElementById('blessingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nameInput = document.getElementById('guestName');
+      const messageInput = document.getElementById('guestMessage');
+      const container = document.getElementById('blessingContainer');
 
-      {/* 1. HERO SECTION (Glassmorphism) */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop')" }}
-        />
-        {/* Deep emerald overlay for contrast */}
-        <div className="absolute inset-0 z-0 bg-emerald-950/75 mix-blend-multiply" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-emerald-950" />
-
-        {/* Floating Glass Card */}
-        <div className="z-10 w-11/12 max-w-2xl px-6 py-12 md:p-16 rounded-3xl bg-emerald-900/30 backdrop-blur-md border border-amber-200/20 shadow-[0_8px_32px_rgba(0,0,0,0.5)] text-center transform transition-all hover:scale-[1.02] duration-500">
-          <FadeIn>
-            <p className="tracking-[0.3em] text-sm md:text-base uppercase text-amber-200 mb-6 font-semibold flex items-center justify-center gap-3">
-              <Sparkles size={16} /> You are invited <Sparkles size={16} />
-            </p>
-          </FadeIn>
-          <FadeIn delay="delay-100">
-            <h1 className="font-serif text-5xl md:text-7xl mb-4 leading-tight text-white drop-shadow-lg">
-              Arun <br className="md:hidden" /><span className="text-amber-300 italic text-4xl md:text-6xl px-4">&amp;</span><br className="md:hidden" /> Kirti
-            </h1>
-          </FadeIn>
-          <FadeIn delay="delay-200">
-            <p className="font-sans font-light text-lg md:text-xl text-amber-100/80 mt-6 tracking-widest uppercase">
-              13th December 2026
-            </p>
-          </FadeIn>
-          <FadeIn delay="delay-300">
-            <div className="mt-8 flex items-center justify-center gap-4 text-sm text-amber-200/60 font-light">
-              <span className="w-16 h-px bg-gradient-to-r from-transparent to-amber-300/50"></span>
-              <p className="italic font-serif text-lg text-amber-100">“Two souls, one heart.”</p>
-              <span className="w-16 h-px bg-gradient-to-l from-transparent to-amber-300/50"></span>
-            </div>
-          </FadeIn>
+      // Create new blessing card
+      const newCard = document.createElement('div');
+      newCard.className = 'p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg opacity-0 transform -translate-y-4 transition-all duration-500';
+      
+      const initial = nameInput.value.charAt(0).toUpperCase();
+      
+      newCard.innerHTML = `
+        <svg class="w-4 h-4 text-gold-400/60 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <p class="text-emerald-50/90 font-light leading-relaxed mb-6 italic text-sm">"${messageInput.value}"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-emerald-800 text-gold-200 flex items-center justify-center font-serif text-sm border border-emerald-600">${initial}</div>
+          <span class="text-gold-200/90 font-medium text-sm tracking-wide">${nameInput.value}</span>
         </div>
+      `;
 
-        {/* Bouncing Scroll Indicator */}
-        <div className="absolute bottom-10 z-10 flex flex-col items-center animate-bounce text-amber-200/70">
-          <span className="text-xs tracking-widest uppercase mb-2 font-medium">Scroll</span>
-          <ChevronDown size={24} className="text-amber-300" />
-        </div>
-      </section>
+      // Insert at top
+      container.insertBefore(newCard, container.firstChild);
+      
+      // Animate in
+      setTimeout(() => {
+        newCard.classList.remove('opacity-0', '-translate-y-4');
+      }, 50);
 
-      {/* 2. THE COUNTDOWN */}
-      <section className="py-20 md:py-28 bg-emerald-950 relative border-b border-amber-900/30">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <h2 className="font-serif text-3xl md:text-4xl text-amber-200 mb-3">Awaiting the Day</h2>
-              <div className="w-12 h-px bg-amber-400/50 mx-auto"></div>
-            </div>
-          </FadeIn>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[
-              { label: 'Days', value: timeLeft.days },
-              { label: 'Hours', value: timeLeft.hours },
-              { label: 'Minutes', value: timeLeft.minutes },
-              { label: 'Seconds', value: timeLeft.seconds }
-            ].map((item, index) => (
-              <FadeIn key={item.label} delay={`delay-${index * 100}`}>
-                <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-emerald-900/40 backdrop-blur-sm border border-amber-200/10 shadow-lg group hover:bg-emerald-800/50 hover:border-amber-300/30 transition-all duration-300">
-                  <span className="font-serif text-4xl md:text-5xl text-white mb-2 drop-shadow-md group-hover:text-amber-200 transition-colors">{item.value.toString().padStart(2, '0')}</span>
-                  <span className="text-xs uppercase tracking-[0.2em] text-amber-400/70 font-semibold">{item.label}</span>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. ANIMATED WEDDING JOURNEY (Timeline) */}
-      <section className="py-24 bg-gradient-to-b from-emerald-950 to-[#033626] relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6">
-          <FadeIn>
-            <div className="text-center mb-20">
-              <h2 className="font-serif text-4xl md:text-5xl text-amber-200 mb-4">Wedding Journey</h2>
-              <p className="text-emerald-200/70 font-light tracking-wider uppercase text-sm">Sunday, 13 December 2026</p>
-            </div>
-          </FadeIn>
-
-          <div className="relative">
-            {/* Center Line for Desktop / Left Line for Mobile */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-amber-300/10 via-amber-300/50 to-amber-300/10 md:transform md:-translate-x-1/2"></div>
-            
-            {[
-              { time: '7:00 PM', title: 'Baraat Swagat', desc: 'Welcoming the groom and his family with music, joy, and dancing.', icon: <Sparkles size={20} /> },
-              { time: '8:00 PM', title: 'Varmala', desc: 'The beautiful exchange of floral garlands signifying acceptance and love.', icon: <Heart size={20} /> },
-              { time: '10:00 PM', title: 'Phere', desc: 'The sacred vows around the holy fire, binding two souls for eternity.', icon: <Clock size={20} /> }
-            ].map((event, index) => (
-              <div key={index} className={`flex flex-col md:flex-row items-start md:items-center justify-between mb-16 relative pl-16 md:pl-0 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
-                
-                {/* Timeline Dot */}
-                <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-emerald-900 text-amber-300 flex items-center justify-center z-10 border-2 border-amber-300 shadow-[0_0_15px_rgba(252,211,77,0.3)]">
-                  {event.icon}
-                </div>
-
-                {/* Content Card */}
-                <div className={`w-full md:w-[45%] ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
-                  <FadeIn direction={index % 2 === 0 ? 'right' : 'left'}>
-                    <div className="p-6 md:p-8 rounded-2xl bg-emerald-900/30 backdrop-blur-md border border-amber-200/10 shadow-xl hover:bg-emerald-900/50 hover:border-amber-300/40 transition-all duration-300 relative group">
-                      <span className="text-amber-400 font-semibold tracking-widest text-sm mb-2 block uppercase">{event.time}</span>
-                      <h3 className="font-serif text-2xl text-white mb-2">{event.title}</h3>
-                      <p className="text-emerald-100/70 font-light leading-relaxed text-sm md:text-base">{event.desc}</p>
-                    </div>
-                  </FadeIn>
-                </div>
-                
-                {/* Empty space for alternating layout on desktop */}
-                <div className="hidden md:block w-[45%]"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. VENUE & STYLE CONCIERGE */}
-      <section className="py-24 bg-[#033626] relative border-t border-emerald-800/50">
-        <div className="max-w-6xl mx-auto px-6">
-          <FadeIn>
-            <div className="text-center mb-16">
-              <h2 className="font-serif text-4xl md:text-5xl text-amber-200 mb-4">Guest Concierge</h2>
-              <div className="w-16 h-px bg-amber-400/30 mx-auto"></div>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            
-            {/* The Venue */}
-            <FadeIn direction="right">
-              <div className="h-full p-8 md:p-10 rounded-3xl bg-emerald-950/60 backdrop-blur-sm border border-amber-200/20 shadow-2xl flex flex-col justify-center relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-8 opacity-10 text-amber-300 group-hover:scale-110 transition-transform duration-700">
-                  <MapPin size={120} />
-                </div>
-                
-                <div className="z-10">
-                  <div className="w-12 h-12 rounded-full bg-amber-300/10 text-amber-300 flex items-center justify-center mb-6 border border-amber-300/30">
-                    <Map size={20} />
-                  </div>
-                  <h3 className="font-serif text-3xl text-white mb-2">The Venue</h3>
-                  <h4 className="text-xl text-amber-200 font-medium mb-4">Karan Vatika</h4>
-                  <p className="text-emerald-100/70 font-light leading-relaxed mb-8 max-w-sm">
-                    Rishal Garden, Najafgarh–Nangloi Road,<br/>
-                    New Delhi – 110041, India
-                  </p>
-                  
-                  <button className="px-6 py-3 rounded-full bg-amber-300 text-emerald-950 font-semibold tracking-wide hover:bg-amber-400 transition-colors inline-flex items-center gap-2 text-sm shadow-[0_4px_14px_rgba(252,211,77,0.4)]">
-                    View on Map <MapPin size={16} />
-                  </button>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Style & Comfort */}
-            <FadeIn direction="left" delay="delay-200">
-              <div className="flex flex-col gap-8 h-full">
-                
-                {/* Dress Code */}
-                <div className="p-8 rounded-3xl bg-emerald-900/40 backdrop-blur-sm border border-amber-200/10 shadow-lg flex-1">
-                  <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-full bg-amber-300/10 text-amber-300 flex items-center justify-center flex-shrink-0 border border-amber-300/30">
-                      <Shirt size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-2xl text-white mb-2">Dress Code</h3>
-                      <p className="text-amber-200/90 font-medium text-sm mb-2">Elegant Traditional</p>
-                      <p className="text-emerald-100/60 font-light text-sm leading-relaxed">
-                        We request our guests to grace the occasion in their finest traditional or Indo-Western attire.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Weather Note */}
-                <div className="p-8 rounded-3xl bg-emerald-900/40 backdrop-blur-sm border border-amber-200/10 shadow-lg flex-1">
-                  <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-full bg-amber-300/10 text-amber-300 flex items-center justify-center flex-shrink-0 border border-amber-300/30">
-                      <Cloud size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-2xl text-white mb-2">Weather Note</h3>
-                      <p className="text-emerald-100/60 font-light text-sm leading-relaxed">
-                        December in Delhi is pleasantly chilly. We highly recommend bringing a light shawl, stole, or jacket to stay comfortable during the evening festivities.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </FadeIn>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 5. VIRTUAL BLESSING WALL */}
-      <section className="py-24 bg-emerald-950 relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none"></div>
-        
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <FadeIn>
-            <div className="text-center mb-16">
-              <h2 className="font-serif text-4xl md:text-5xl text-amber-200 mb-4">Virtual Blessing Wall</h2>
-              <p className="text-emerald-200/70 font-light max-w-2xl mx-auto">
-                Leave a note, a wish, or a piece of advice for the couple as they embark on this beautiful new journey together.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            {/* Input Form */}
-            <div className="lg:col-span-5 sticky top-8">
-              <FadeIn direction="right">
-                <div className="bg-emerald-900/30 backdrop-blur-xl p-8 rounded-3xl border border-amber-200/20 shadow-2xl">
-                  <h3 className="font-serif text-2xl text-white mb-6">Send Your Love</h3>
-                  
-                  <form onSubmit={handleBlessingSubmit} className="space-y-5">
-                    <div>
-                      <label className="block text-sm font-medium text-amber-100/80 mb-2">Your Name</label>
-                      <input 
-                        type="text" 
-                        value={blessingName}
-                        onChange={(e) => setBlessingName(e.target.value)}
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-emerald-950/50 border border-emerald-700 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300 outline-none transition-all text-white placeholder-emerald-100/30"
-                        placeholder="E.g. Mr. & Mrs. Sharma"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-amber-100/80 mb-2">Your Wish</label>
-                      <textarea 
-                        rows="4"
-                        value={blessingText}
-                        onChange={(e) => setBlessingText(e.target.value)}
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-emerald-950/50 border border-emerald-700 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300 outline-none transition-all text-white placeholder-emerald-100/30 resize-none"
-                        placeholder="Write a beautiful message..."
-                      ></textarea>
-                    </div>
-
-                    <button 
-                      type="submit"
-                      className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-amber-300 text-emerald-950 font-semibold hover:bg-amber-400 transition-colors shadow-[0_4px_14px_rgba(252,211,77,0.2)] mt-4"
-                    >
-                      Post Blessing <Send size={18} />
-                    </button>
-                  </form>
-                </div>
-              </FadeIn>
-            </div>
-
-            {/* Display Blessings (Masonry/Grid) */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {blessings.map((blessing, index) => (
-                <FadeIn key={blessing.id} delay={`delay-${(index % 3) * 100}`}>
-                  <div className="p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg hover:bg-white/10 transition-colors duration-300">
-                    <Heart size={16} className="text-amber-400/60 mb-4" />
-                    <p className="text-emerald-50/90 font-light leading-relaxed mb-6 italic text-sm md:text-base">
-                      "{blessing.text}"
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-emerald-800 text-amber-200 flex items-center justify-center font-serif text-sm border border-emerald-600">
-                        {blessing.name.charAt(0).toUpperCase()}
-                      </div>
-                      <span className="text-amber-200/90 font-medium text-sm tracking-wide">{blessing.name}</span>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-16 bg-[#022c22] border-t border-emerald-900 text-center relative z-10">
-        <div className="font-serif text-4xl text-amber-300 mb-6">A <span className="text-emerald-600 px-2">&</span> K</div>
-        <p className="text-emerald-200/40 text-xs font-light uppercase tracking-[0.3em]">Forever Begins Here</p>
-      </footer>
-
-    </div>
-  );
-}
+      // Clear form
+      nameInput.value = '';
+      messageInput.value = '';
+    });
+  </script>
+</body>
+</html>
