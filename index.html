@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   
   <!-- WhatsApp & Social Media Preview Tags -->
-  <meta property="og:title" content="Arun & Kirti — You're Invited!" />
-  <meta property="og:description" content="Join us to celebrate the wedding of Arun Kumar and Kirti on 13 December 2026 in New Delhi." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1519225495810-7517c5a62176?q=80&w=1200&h=630&fit=crop" />
+  <meta property="og:title" content="Shubh Vivah | Arun & Kirti" />
+  <meta property="og:description" content="We joyfully invite you to the auspicious wedding ceremony of Arun and Kirti on 13 Dec 2026." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1583089892943-e02e5ee6be9d?q=80&w=1200&fit=crop" />
   <meta property="og:type" content="website" />
   
   <title>Wedding Invitation | Arun & Kirti</title>
@@ -20,36 +20,31 @@
       theme: {
         extend: {
           colors: {
-            ivory: {
-              50: '#fffbf7',
-              100: '#fef7ef',
-              200: '#fcf1e3',
-              300: '#f9e4cd'
+            parchment: {
+              100: '#fffdf5',
+              200: '#fbf4e1',
+              300: '#f3e6c3',
+              400: '#e5d19f',
             },
-            rose: {
-              100: '#ffe4e6',
-              200: '#fecdd3',
-              300: '#fda4af',
-              400: '#fb7185',
-              500: '#f43f5e',
-              600: '#e11d48',
-              700: '#be123c',
-              800: '#9f1239',
-              850: '#4a1521', /* Primary Deep burgundy text/contrast */
-              900: '#3c0a13',
-              950: '#270308'
+            crimson: {
+              600: '#b91c1c',
+              700: '#991b1b',
+              800: '#7f1d1d',
+              900: '#5a1313', /* Velvet Red */
+              950: '#3a0808'
             },
             gold: {
-              200: '#fef08a',
               300: '#fde047',
               400: '#facc15',
               500: '#eab308',
-              600: '#ca8a04'
+              600: '#ca8a04',
+              700: '#a16207', /* Antique Gold */
             }
           },
           fontFamily: {
             serif: ['"Playfair Display"', 'serif'],
             sans: ['"Inter"', 'sans-serif'],
+            hindi: ['"Tiro Devanagari Hindi"', 'serif'], /* Added for authentic Hindi script */
           }
         }
       }
@@ -57,23 +52,23 @@
   </script>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
   
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #fffbf7; color: #4a1521; overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #fbf4e1; color: #5a1313; overflow-x: hidden; scroll-behavior: smooth; }
     h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+    .font-hindi { font-family: 'Tiro Devanagari Hindi', serif; }
     
-    /* Custom Scrollbar for ivory/rose theme */
+    /* Custom Scrollbar for Royal Theme */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #fffbf7; }
-    ::-webkit-scrollbar-thumb { background: #fda4af; border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: #fbf4e1; }
+    ::-webkit-scrollbar-thumb { background: #ca8a04; border-radius: 3px; }
     
-    /* Elegant Dusty Rose & Ivory Glassmorphism Effect */
-    .glass { 
-      background: rgba(254, 247, 239, 0.85); 
-      backdrop-filter: blur(8px); 
-      -webkit-backdrop-filter: blur(8px); 
-      border: 1px solid rgba(190, 18, 60, 0.18); 
+    /* Royal Crimson Card with Gold Border */
+    .royal-card {
+      background: linear-gradient(135deg, #7f1d1d, #5a1313);
+      border: 4px double #d4af37; /* Metallic Gold */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
     
     /* Scroll Reveal Animations */
@@ -90,7 +85,7 @@
       position: absolute;
       top: 0; bottom: 0; left: 50%;
       width: 2px;
-      background: linear-gradient(to bottom, transparent, #fda4af, #be123c, #fda4af, transparent);
+      background: linear-gradient(to bottom, transparent, #ca8a04, #991b1b, #ca8a04, transparent);
       transform: translateX(-50%);
     }
     /* Mobile Timeline Fix */
@@ -99,88 +94,104 @@
     }
   </style>
 </head>
-<body class="antialiased selection:bg-rose-200 selection:text-rose-950">
+<body class="antialiased selection:bg-gold-300 selection:text-crimson-900">
 
-  <!-- 1. HERO SECTION -->
-  <section class="relative min-h-screen flex items-center justify-center p-4 sm:p-6">
-    <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1519225495810-7517c5a62176?q=80&w=2000&fit=crop" alt="Floral Wedding Background" class="w-full h-full object-cover opacity-25">
-      <!-- Light overlay blending into natural soft paper/ivory hues -->
-      <div class="absolute inset-0 bg-gradient-to-b from-[#fffbf7]/30 to-[#fffbf7]"></div>
-    </div>
+  <!-- Subtle Mandala Texture Background Overlay -->
+  <div class="fixed inset-0 z-0 opacity-[0.04] pointer-events-none bg-[url('https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"></div>
 
-    <div class="glass relative z-10 p-6 sm:p-10 md:p-16 rounded-3xl max-w-2xl w-full text-center shadow-xl border border-rose-300/30 reveal active">
-      <p class="text-rose-700 tracking-[0.2em] sm:tracking-[0.3em] uppercase text-xs sm:text-sm mb-4 sm:mb-6 flex items-center justify-center gap-2 sm:gap-3 font-semibold">
-        <svg class="w-3 h-3 sm:w-4 sm:h-4 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-        You are invited
-        <svg class="w-3 h-3 sm:w-4 sm:h-4 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+  <!-- 1. HERO SECTION (ROYAL INVITATION) -->
+  <section class="relative min-h-screen flex items-center justify-center p-4 sm:p-6 z-10">
+    <div class="royal-card relative p-6 sm:p-10 md:p-16 rounded-sm max-w-2xl w-full text-center border-[6px] border-double border-gold-500 reveal active outline outline-offset-4 outline-1 outline-gold-600/50 m-4">
+      
+      <!-- Top Corner Flourishes -->
+      <div class="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-gold-400"></div>
+      <div class="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-gold-400"></div>
+      
+      <!-- Shri Ganeshay Namah -->
+      <h2 class="font-hindi text-xl md:text-2xl text-gold-400 mb-6 drop-shadow-md">॥ श्री गणेशाय नमः ॥</h2>
+
+      <p class="text-gold-200 tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-xs mb-4 sm:mb-6 font-semibold">
+        Please join us to celebrate the marriage of
       </p>
       
-      <h1 class="text-4xl sm:text-5xl md:text-7xl font-serif text-rose-850 mb-4 leading-tight drop-shadow-sm">
-        Arun <br class="md:hidden"><span class="text-rose-500 italic font-light px-2 sm:px-4">&amp;</span><br class="md:hidden"> Kirti
-      </h1>
-      
-      <div class="w-16 sm:w-24 h-[1px] bg-rose-300/60 mx-auto my-6 sm:my-8"></div>
-      <p class="text-lg sm:text-xl md:text-2xl font-serif text-rose-800 tracking-wider font-semibold">13th December 2026</p>
-      
-      <div class="mt-6 sm:mt-8 flex items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-medium text-rose-500/80">
-        <span class="w-8 sm:w-16 h-px bg-gradient-to-r from-transparent to-rose-400/50"></span>
-        <p class="italic font-serif text-base sm:text-lg text-rose-700">“Two souls, one heart.”</p>
-        <span class="w-8 sm:w-16 h-px bg-gradient-to-l from-transparent to-rose-400/50"></span>
+      <div class="py-4">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-serif text-gold-400 mb-2 leading-tight font-bold drop-shadow-lg">
+          Arun
+        </h1>
+        <div class="flex items-center justify-center gap-4 py-2">
+          <span class="w-12 sm:w-16 h-px bg-gold-600"></span>
+          <span class="font-hindi text-gold-500 text-xl sm:text-3xl">संग</span>
+          <span class="w-12 sm:w-16 h-px bg-gold-600"></span>
+        </div>
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-serif text-gold-400 mt-2 leading-tight font-bold drop-shadow-lg">
+          Kirti
+        </h1>
       </div>
+      
+      <div class="w-24 sm:w-32 h-px bg-gold-500 mx-auto my-6 sm:my-8 relative">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-crimson-800 px-2 font-hindi text-gold-400 text-lg">शुभ विवाह</div>
+      </div>
+      
+      <p class="text-lg sm:text-xl font-serif text-gold-100 tracking-widest font-bold">13th December 2026</p>
+      <p class="mt-3 text-xs sm:text-sm font-medium text-gold-300 uppercase tracking-widest">New Delhi</p>
+
+      <!-- Bottom Corner Flourishes -->
+      <div class="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-gold-400"></div>
+      <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-gold-400"></div>
     </div>
   </section>
 
   <!-- 2. COUNTDOWN -->
-  <section class="py-16 sm:py-20 bg-ivory-50 relative border-b border-rose-100">
-    <div class="max-w-4xl mx-auto px-2 sm:px-6 relative z-10">
+  <section class="py-16 sm:py-20 bg-parchment-200 relative border-y-2 border-gold-700/20 z-10">
+    <div class="max-w-4xl mx-auto px-2 sm:px-6 relative">
       <div class="text-center mb-10 sm:mb-12 reveal">
-        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-rose-850 mb-3 font-semibold">Awaiting the Day</h2>
-        <div class="w-12 h-px bg-rose-400/50 mx-auto"></div>
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-crimson-900 mb-2 font-bold">Auspicious Moments</h2>
+        <div class="w-16 h-[2px] bg-crimson-700 mx-auto"></div>
       </div>
       
-      <!-- STATED: strict 4-column natural 4-in-a-row layout on all mobile screens -->
+      <!-- STRICT 4-COLUMN LAYOUT -->
       <div class="grid grid-cols-4 gap-2 sm:gap-6">
-        <div class="glass flex flex-col items-center justify-center p-2 sm:p-6 rounded-xl sm:rounded-2xl reveal hover:scale-105 transition-transform hover:border-rose-400/40">
-          <span id="cd-days" class="font-serif text-2xl sm:text-4xl md:text-5xl text-rose-850 mb-1 sm:mb-2 font-bold">00</span>
-          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-rose-700 font-bold">Days</span>
+        <div class="royal-card flex flex-col items-center justify-center p-3 sm:p-6 rounded-sm reveal transition-transform hover:scale-105 border-4">
+          <span id="cd-days" class="font-serif text-2xl sm:text-4xl md:text-5xl text-gold-400 mb-1 sm:mb-2 font-bold drop-shadow-md">00</span>
+          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-gold-200 font-medium">Days</span>
         </div>
-        <div class="glass flex flex-col items-center justify-center p-2 sm:p-6 rounded-xl sm:rounded-2xl reveal hover:scale-105 transition-transform hover:border-rose-400/40" style="transition-delay: 100ms;">
-          <span id="cd-hours" class="font-serif text-2xl sm:text-4xl md:text-5xl text-rose-850 mb-1 sm:mb-2 font-bold">00</span>
-          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-rose-700 font-bold">Hours</span>
+        <div class="royal-card flex flex-col items-center justify-center p-3 sm:p-6 rounded-sm reveal transition-transform hover:scale-105 border-4" style="transition-delay: 100ms;">
+          <span id="cd-hours" class="font-serif text-2xl sm:text-4xl md:text-5xl text-gold-400 mb-1 sm:mb-2 font-bold drop-shadow-md">00</span>
+          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-gold-200 font-medium">Hours</span>
         </div>
-        <div class="glass flex flex-col items-center justify-center p-2 sm:p-6 rounded-xl sm:rounded-2xl reveal hover:scale-105 transition-transform hover:border-rose-400/40" style="transition-delay: 200ms;">
-          <span id="cd-minutes" class="font-serif text-2xl sm:text-4xl md:text-5xl text-rose-850 mb-1 sm:mb-2 font-bold">00</span>
-          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-rose-700 font-bold">Mins</span>
+        <div class="royal-card flex flex-col items-center justify-center p-3 sm:p-6 rounded-sm reveal transition-transform hover:scale-105 border-4" style="transition-delay: 200ms;">
+          <span id="cd-minutes" class="font-serif text-2xl sm:text-4xl md:text-5xl text-gold-400 mb-1 sm:mb-2 font-bold drop-shadow-md">00</span>
+          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-gold-200 font-medium">Mins</span>
         </div>
-        <div class="glass flex flex-col items-center justify-center p-2 sm:p-6 rounded-xl sm:rounded-2xl reveal hover:scale-105 transition-transform hover:border-rose-400/40" style="transition-delay: 300ms;">
-          <span id="cd-seconds" class="font-serif text-2xl sm:text-4xl md:text-5xl text-rose-850 mb-1 sm:mb-2 font-bold">00</span>
-          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-rose-700 font-bold">Secs</span>
+        <div class="royal-card flex flex-col items-center justify-center p-3 sm:p-6 rounded-sm reveal transition-transform hover:scale-105 border-4" style="transition-delay: 300ms;">
+          <span id="cd-seconds" class="font-serif text-2xl sm:text-4xl md:text-5xl text-gold-400 mb-1 sm:mb-2 font-bold drop-shadow-md">00</span>
+          <span class="text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-gold-200 font-medium">Secs</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 3. ANIMATED WEDDING JOURNEY (TIMELINE) -->
-  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-[#fffbf7] to-[#fef5ec] relative overflow-hidden">
+  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-parchment-100 relative z-10">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16 sm:mb-20 reveal">
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-rose-850 mb-3 sm:mb-4">Wedding Journey</h2>
-        <p class="text-rose-700 font-medium tracking-wider uppercase text-xs sm:text-sm">Sunday, 13 December 2026</p>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-crimson-900 mb-3 sm:mb-4 font-bold">Shubh Mangal Prasang</h2>
+        <p class="text-crimson-700 font-medium tracking-widest uppercase text-xs sm:text-sm">13 December 2026</p>
       </div>
 
       <div class="max-w-4xl mx-auto relative timeline-line">
         <!-- Event 1 -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 sm:mb-16 relative pl-14 sm:pl-16 md:pl-0">
           <div class="w-full md:w-[45%] md:text-right reveal-left">
-            <div class="glass p-5 sm:p-6 md:p-8 rounded-2xl hover:border-rose-400/40 hover:bg-rose-100/10 transition-all">
-              <span class="text-rose-600 font-bold tracking-wider sm:tracking-widest text-xs sm:text-sm mb-1 sm:mb-2 block uppercase">7:00 PM</span>
-              <h3 class="font-serif text-xl sm:text-2xl text-rose-850 font-semibold mb-2">Baraat Swagat</h3>
-              <p class="text-rose-950/80 font-light leading-relaxed text-sm md:text-base">Welcoming the groom and his family with music, joy, and dancing.</p>
+            <div class="bg-white p-5 sm:p-6 md:p-8 rounded-sm shadow-md border-b-4 border-crimson-800">
+              <span class="text-gold-600 font-bold tracking-wider sm:tracking-widest text-xs sm:text-sm mb-1 sm:mb-2 block uppercase">7:00 PM</span>
+              <h3 class="font-serif text-xl sm:text-2xl text-crimson-900 font-bold mb-2">Baraat Swagat</h3>
+              <p class="text-gray-700 font-light leading-relaxed text-sm md:text-base">Welcoming the groom and his family with music, joy, and dancing.</p>
             </div>
           </div>
-          <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-ivory-100 text-rose-600 flex items-center justify-center z-10 border-2 border-rose-500 shadow-[0_0_15px_rgba(190,18,60,0.15)]">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          <!-- Traditional Icon Dot -->
+          <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-crimson-900 text-gold-400 flex items-center justify-center z-10 border-2 border-gold-500 shadow-lg">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
           </div>
           <div class="hidden md:block w-[45%]"></div>
         </div>
@@ -188,14 +199,14 @@
         <!-- Event 2 -->
         <div class="flex flex-col md:flex-row-reverse items-start md:items-center justify-between mb-12 sm:mb-16 relative pl-14 sm:pl-16 md:pl-0">
           <div class="w-full md:w-[45%] md:text-left reveal-right">
-            <div class="glass p-5 sm:p-6 md:p-8 rounded-2xl hover:border-rose-400/40 hover:bg-rose-100/10 transition-all">
-              <span class="text-rose-600 font-bold tracking-wider sm:tracking-widest text-xs sm:text-sm mb-1 sm:mb-2 block uppercase">9:00 PM</span>
-              <h3 class="font-serif text-xl sm:text-2xl text-rose-850 font-semibold mb-2">Varmala</h3>
-              <p class="text-rose-950/80 font-light leading-relaxed text-sm md:text-base">The beautiful exchange of floral garlands signifying acceptance and love.</p>
+            <div class="bg-white p-5 sm:p-6 md:p-8 rounded-sm shadow-md border-b-4 border-crimson-800">
+              <span class="text-gold-600 font-bold tracking-wider sm:tracking-widest text-xs sm:text-sm mb-1 sm:mb-2 block uppercase">9:00 PM</span>
+              <h3 class="font-serif text-xl sm:text-2xl text-crimson-900 font-bold mb-2">Varmala</h3>
+              <p class="text-gray-700 font-light leading-relaxed text-sm md:text-base">The beautiful exchange of floral garlands signifying acceptance and love.</p>
             </div>
           </div>
-          <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-ivory-100 text-rose-600 flex items-center justify-center z-10 border-2 border-rose-500 shadow-[0_0_15px_rgba(190,18,60,0.15)]">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-crimson-900 text-gold-400 flex items-center justify-center z-10 border-2 border-gold-500 shadow-lg">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           </div>
           <div class="hidden md:block w-[45%]"></div>
         </div>
@@ -203,14 +214,15 @@
         <!-- Event 3 -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between relative pl-14 sm:pl-16 md:pl-0">
           <div class="w-full md:w-[45%] md:text-right reveal-left">
-            <div class="glass p-5 sm:p-6 md:p-8 rounded-2xl hover:border-rose-400/40 hover:bg-rose-100/10 transition-all">
-              <span class="text-rose-600 font-bold tracking-wider sm:tracking-widest text-xs sm:text-sm mb-1 sm:mb-2 block uppercase">10:30 PM</span>
-              <h3 class="font-serif text-xl sm:text-2xl text-rose-850 font-semibold mb-2">Phere & Dinner</h3>
-              <p class="text-rose-950/80 font-light leading-relaxed text-sm md:text-base">Sacred vows around the holy fire, followed by a grand celebratory feast.</p>
+            <div class="bg-white p-5 sm:p-6 md:p-8 rounded-sm shadow-md border-b-4 border-crimson-800">
+              <span class="text-gold-600 font-bold tracking-wider sm:tracking-widest text-xs sm:text-sm mb-1 sm:mb-2 block uppercase">10:30 PM</span>
+              <h3 class="font-serif text-xl sm:text-2xl text-crimson-900 font-bold mb-2">Phere & Dinner</h3>
+              <p class="text-gray-700 font-light leading-relaxed text-sm md:text-base">Sacred vows around the holy fire, followed by a grand celebratory feast.</p>
             </div>
           </div>
-          <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-ivory-100 text-rose-600 flex items-center justify-center z-10 border-2 border-rose-500 shadow-[0_0_15px_rgba(190,18,60,0.15)]">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-crimson-900 text-gold-400 flex items-center justify-center z-10 border-2 border-gold-500 shadow-lg">
+            <!-- Flame SVG representing Phere/Agni -->
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.2 2c0 0-6.4 7.2-6.4 13.6A7.2 7.2 0 0 0 12 22.8a7.2 7.2 0 0 0 7.2-7.2c0-6.4-6.4-13.6-6.4-13.6zm1.6 17.6a4 4 0 0 1-4-4c0-3.2 3.2-6.4 3.2-6.4s3.2 3.2 3.2 6.4a4 4 0 0 1-2.4 4z"/></svg>
           </div>
           <div class="hidden md:block w-[45%]"></div>
         </div>
@@ -218,58 +230,57 @@
     </div>
   </section>
 
-  <!-- 4. VENUE & STYLE CONCIERGE -->
-  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-[#fdf8f4] relative border-t border-rose-100/80">
+  <!-- 4. VENUE & STYLE (Atithi Devo Bhava) -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-crimson-900 text-parchment-200 relative border-t-4 border-gold-600 z-10">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 sm:mb-16 reveal">
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-rose-850 mb-3 sm:mb-4">Guest Concierge</h2>
-        <div class="w-16 h-px bg-rose-400/30 mx-auto"></div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-400 mb-3 sm:mb-4 font-bold">Event Details</h2>
+        <div class="w-16 h-px bg-gold-600/50 mx-auto"></div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
         <!-- The Venue -->
-        <div class="glass p-6 sm:p-8 md:p-10 rounded-3xl flex flex-col justify-center relative overflow-hidden reveal-left">
-          <div class="absolute top-0 right-0 p-8 opacity-10 text-rose-700">
-            <svg class="w-24 h-24 sm:w-32 sm:h-32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="border border-gold-600/30 p-6 sm:p-8 md:p-10 rounded-sm flex flex-col justify-center relative overflow-hidden reveal-left bg-crimson-950/50">
+          <div class="absolute top-0 right-0 p-8 opacity-5 text-gold-400">
+            <svg class="w-24 h-24 sm:w-32 sm:h-32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           </div>
           <div class="z-10">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-rose-300/10 text-rose-700 flex items-center justify-center mb-4 sm:mb-6 border border-rose-300/30">
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold-900/30 text-gold-400 flex items-center justify-center mb-4 sm:mb-6 border border-gold-600/50">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
             </div>
-            <h3 class="font-serif text-2xl sm:text-3xl text-rose-850 font-semibold mb-2">The Venue</h3>
-            <h4 class="text-lg sm:text-xl text-rose-700 font-medium mb-3 sm:mb-4">Karan Vatika</h4>
-            <p class="text-rose-950/80 font-light leading-relaxed mb-6 sm:mb-8 max-w-sm text-sm sm:text-base">
+            <h3 class="font-serif text-2xl sm:text-3xl text-gold-100 font-bold mb-2">The Venue</h3>
+            <h4 class="text-lg sm:text-xl text-gold-400 font-medium mb-3 sm:mb-4">Karan Vatika</h4>
+            <p class="text-parchment-300 font-light leading-relaxed mb-6 sm:mb-8 max-w-sm text-sm sm:text-base">
               Lawn No. 2, Rishal Garden,<br>
               Najafgarh–Nangloi Road,<br>
               New Delhi – 110041
             </p>
-            <a href="https://maps.google.com/?cid=13762507825252838880" target="_blank" class="inline-flex px-5 sm:px-6 py-3 rounded-full bg-rose-700 text-white font-semibold tracking-wide hover:bg-rose-800 transition-colors items-center gap-2 text-xs sm:text-sm shadow-md">
+            <a href="https://maps.google.com/?cid=13762507825252838880" target="_blank" class="inline-flex px-5 sm:px-6 py-3 rounded-sm bg-gold-600 hover:bg-gold-500 text-crimson-950 font-bold tracking-wide transition-colors items-center gap-2 text-xs sm:text-sm">
               View on Map
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
           </div>
         </div>
 
         <!-- Style & Comfort -->
         <div class="flex flex-col gap-6 sm:gap-8 reveal-right">
-          <div class="glass p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-rose-300/10 text-rose-700 flex items-center justify-center flex-shrink-0 border border-rose-300/30">
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+          <div class="border border-gold-600/30 p-6 sm:p-8 rounded-sm flex flex-col sm:flex-row items-start gap-4 sm:gap-5 bg-crimson-950/50">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold-900/30 text-gold-400 flex items-center justify-center flex-shrink-0 border border-gold-600/50">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
             </div>
             <div>
-              <h3 class="font-serif text-xl sm:text-2xl text-rose-850 font-semibold mb-1 sm:mb-2">Dress Code</h3>
-              <p class="text-rose-600 font-medium text-xs sm:text-sm mb-2">Elegant Traditional</p>
-              <p class="text-rose-950/70 font-light text-sm leading-relaxed">We request our guests to grace the occasion in their finest traditional or Indo-Western attire.</p>
+              <h3 class="font-serif text-xl sm:text-2xl text-gold-100 font-bold mb-1 sm:mb-2">Dress Code</h3>
+              <p class="text-gold-400 font-bold text-xs sm:text-sm mb-2">Elegant Traditional</p>
+              <p class="text-parchment-300 font-light text-sm leading-relaxed">We request our guests to grace the occasion in their finest traditional or Indo-Western attire.</p>
             </div>
           </div>
           
-          <div class="glass p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-rose-300/10 text-rose-700 flex items-center justify-center flex-shrink-0 border border-rose-300/30">
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+          <div class="border border-gold-600/30 p-6 sm:p-8 rounded-sm flex flex-col sm:flex-row items-start gap-4 sm:gap-5 bg-crimson-950/50">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold-900/30 text-gold-400 flex items-center justify-center flex-shrink-0 border border-gold-600/50">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
             </div>
             <div>
-              <h3 class="font-serif text-xl sm:text-2xl text-rose-850 font-semibold mb-1 sm:mb-2">Weather Note</h3>
-              <p class="text-rose-950/70 font-light text-sm leading-relaxed">December in Delhi is pleasantly chilly. We highly recommend bringing a light shawl, stole, or jacket to stay comfortable during the evening festivities.</p>
+              <h3 class="font-serif text-xl sm:text-2xl text-gold-100 font-bold mb-1 sm:mb-2">Weather Note</h3>
+              <p class="text-parchment-300 font-light text-sm leading-relaxed">December in Delhi is pleasantly chilly. We highly recommend bringing a light shawl, stole, or jacket to stay comfortable during the evening festivities.</p>
             </div>
           </div>
         </div>
@@ -277,31 +288,30 @@
     </div>
   </section>
 
-  <!-- 5. VIRTUAL BLESSING WALL -->
-  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-ivory-50 relative overflow-hidden">
+  <!-- 5. AASHIRWAD (BLESSING) WALL -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-parchment-200 relative overflow-hidden z-10 border-t-4 border-gold-600">
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="text-center mb-12 sm:mb-16 reveal">
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-rose-850 font-semibold mb-3 sm:mb-4">Virtual Blessing Wall</h2>
-        <p class="text-rose-950/70 font-light max-w-2xl mx-auto text-sm sm:text-base">Leave a note, a wish, or a piece of advice for the couple as they embark on this beautiful new journey together.</p>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-crimson-900 font-bold mb-3 sm:mb-4">Aashirwad</h2>
+        <p class="text-crimson-700 font-medium max-w-2xl mx-auto text-sm sm:text-base">Leave a blessing or a wish for Arun and Kirti as they embark on this beautiful new journey together.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         <!-- Input Form -->
         <div class="lg:col-span-5 sticky top-4 sm:top-8 reveal-left">
-          <div class="glass p-6 sm:p-8 rounded-3xl shadow-xl">
-            <h3 class="font-serif text-xl sm:text-2xl text-rose-850 font-semibold mb-5 sm:mb-6">Send Your Love</h3>
+          <div class="royal-card p-6 sm:p-8 rounded-sm shadow-xl border-4">
+            <h3 class="font-serif text-xl sm:text-2xl text-gold-400 font-bold mb-5 sm:mb-6">Send Your Love</h3>
             <form id="blessingForm" class="space-y-4 sm:space-y-5">
               <div>
-                <label class="block text-xs sm:text-sm font-semibold text-rose-800 mb-1 sm:mb-2">Your Name</label>
-                <input type="text" id="guestName" required class="w-full px-4 py-3 rounded-xl bg-white/70 border border-rose-300/30 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all text-rose-950 placeholder-rose-900/30 text-sm sm:text-base" placeholder="E.g. Mr. & Mrs. Sharma">
+                <label class="block text-xs sm:text-sm font-semibold text-gold-200 mb-1 sm:mb-2">Your Name</label>
+                <input type="text" id="guestName" required class="w-full px-4 py-3 rounded-sm bg-parchment-100 border-2 border-gold-600 focus:border-gold-400 focus:outline-none transition-all text-crimson-900 placeholder-crimson-900/30 text-sm sm:text-base" placeholder="E.g. Mr. & Mrs. Sharma">
               </div>
               <div>
-                <label class="block text-xs sm:text-sm font-semibold text-rose-800 mb-1 sm:mb-2">Your Wish</label>
-                <textarea id="guestMessage" rows="4" required class="w-full px-4 py-3 rounded-xl bg-white/70 border border-rose-300/30 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all text-rose-950 placeholder-rose-900/30 resize-none text-sm sm:text-base" placeholder="Write a beautiful message..."></textarea>
+                <label class="block text-xs sm:text-sm font-semibold text-gold-200 mb-1 sm:mb-2">Your Wish</label>
+                <textarea id="guestMessage" rows="4" required class="w-full px-4 py-3 rounded-sm bg-parchment-100 border-2 border-gold-600 focus:border-gold-400 focus:outline-none transition-all text-crimson-900 placeholder-crimson-900/30 resize-none text-sm sm:text-base" placeholder="Write a beautiful blessing..."></textarea>
               </div>
-              <button type="submit" class="w-full flex items-center justify-center gap-2 py-3 sm:py-4 rounded-xl bg-rose-700 text-white font-semibold hover:bg-rose-850 transition-colors shadow-md mt-2 sm:mt-4 text-sm sm:text-base">
-                Post Blessing 
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+              <button type="submit" class="w-full flex items-center justify-center gap-2 py-3 sm:py-4 rounded-sm bg-gold-500 text-crimson-950 font-bold hover:bg-gold-400 transition-colors shadow-md mt-2 sm:mt-4 text-sm sm:text-base">
+                Post Blessing
               </button>
             </form>
           </div>
@@ -310,21 +320,19 @@
         <!-- Display Blessings Grid -->
         <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" id="blessingContainer">
           <!-- Pre-filled examples -->
-          <div class="p-5 sm:p-6 rounded-2xl bg-white/50 backdrop-blur-md border border-rose-300/20 shadow-sm reveal">
-            <svg class="w-4 h-4 text-rose-500 mb-3 sm:mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-            <p class="text-rose-950 font-light leading-relaxed mb-4 sm:mb-6 italic text-sm">"Wishing you both a lifetime of eternal love and endless joy! Can't wait to celebrate."</p>
+          <div class="p-5 sm:p-6 rounded-sm bg-white border-l-4 border-crimson-800 shadow-md reveal">
+            <p class="text-gray-800 font-serif leading-relaxed mb-4 sm:mb-6 italic text-sm md:text-base">"Wishing you both a lifetime of eternal love and endless joy! Can't wait to celebrate."</p>
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-serif text-sm border border-rose-300/40">R</div>
-              <span class="text-rose-900/80 font-medium text-xs sm:text-sm tracking-wide">Rahul & Family</span>
+              <div class="w-8 h-8 rounded-full bg-gold-200 text-crimson-900 flex items-center justify-center font-serif text-sm font-bold border border-gold-500">R</div>
+              <span class="text-crimson-900 font-bold text-xs sm:text-sm tracking-wide">Rahul & Family</span>
             </div>
           </div>
           
-          <div class="p-5 sm:p-6 rounded-2xl bg-white/50 backdrop-blur-md border border-rose-300/20 shadow-sm reveal" style="transition-delay: 100ms;">
-            <svg class="w-4 h-4 text-rose-500 mb-3 sm:mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-            <p class="text-rose-950 font-light leading-relaxed mb-4 sm:mb-6 italic text-sm">"May your journey ahead be as beautiful as the love you share today. God bless!"</p>
+          <div class="p-5 sm:p-6 rounded-sm bg-white border-l-4 border-crimson-800 shadow-md reveal" style="transition-delay: 100ms;">
+            <p class="text-gray-800 font-serif leading-relaxed mb-4 sm:mb-6 italic text-sm md:text-base">"May your journey ahead be as beautiful as the love you share today. God bless!"</p>
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-serif text-sm border border-rose-300/40">A</div>
-              <span class="text-rose-900/80 font-medium text-xs sm:text-sm tracking-wide">Aman Verma</span>
+              <div class="w-8 h-8 rounded-full bg-gold-200 text-crimson-900 flex items-center justify-center font-serif text-sm font-bold border border-gold-500">A</div>
+              <span class="text-crimson-900 font-bold text-xs sm:text-sm tracking-wide">Aman Verma</span>
             </div>
           </div>
         </div>
@@ -332,9 +340,9 @@
     </div>
   </section>
 
-  <footer class="py-12 sm:py-16 bg-[#faf3eb] border-t border-rose-200/50 text-center relative z-10">
-    <div class="font-serif text-3xl sm:text-4xl text-rose-850 mb-4 sm:mb-6">A <span class="text-rose-500 px-2">&amp;</span> K</div>
-    <p class="text-rose-700/60 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] sm:tracking-[0.3em]">Forever Begins Here</p>
+  <footer class="py-12 sm:py-16 bg-crimson-950 border-t-2 border-gold-600 text-center relative z-10">
+    <div class="font-serif text-3xl sm:text-4xl text-gold-400 mb-4 sm:mb-6 font-bold">A <span class="text-gold-600 px-2">&amp;</span> K</div>
+    <p class="text-gold-600 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">Forever Begins Here</p>
   </footer>
 
   <script>
@@ -383,16 +391,15 @@
 
       // Create new blessing card
       const newCard = document.createElement('div');
-      newCard.className = 'p-5 sm:p-6 rounded-2xl bg-white/50 backdrop-blur-md border border-rose-300/20 shadow-sm opacity-0 transform -translate-y-4 transition-all duration-500';
+      newCard.className = 'p-5 sm:p-6 rounded-sm bg-white border-l-4 border-crimson-800 shadow-md opacity-0 transform -translate-y-4 transition-all duration-500';
       
       const initial = nameInput.value.charAt(0).toUpperCase();
       
       newCard.innerHTML = `
-        <svg class="w-4 h-4 text-rose-500 mb-3 sm:mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-        <p class="text-[#270308]/90 font-light leading-relaxed mb-4 sm:mb-6 italic text-sm">"${messageInput.value}"</p>
+        <p class="text-gray-800 font-serif leading-relaxed mb-4 sm:mb-6 italic text-sm md:text-base">"${messageInput.value}"</p>
         <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-serif text-sm border border-rose-300/40">${initial}</div>
-          <span class="text-rose-900/80 font-medium text-xs sm:text-sm tracking-wide">${nameInput.value}</span>
+          <div class="w-8 h-8 rounded-full bg-gold-200 text-crimson-900 flex items-center justify-center font-serif text-sm font-bold border border-gold-500">${initial}</div>
+          <span class="text-crimson-900 font-bold text-xs sm:text-sm tracking-wide">${nameInput.value}</span>
         </div>
       `;
 
