@@ -45,11 +45,16 @@
   </script>
 
   <!-- Royal Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+      --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 55%, #fbf5b7 80%, #aa771c 100%);
+    }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
     }
 
     body {
@@ -58,6 +63,7 @@
       color: #fef9c3;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      margin: 0;
     }
 
     body.gate-locked {
@@ -65,175 +71,164 @@
       height: 100vh;
     }
 
-    /* Shimmering 24K Gold Foil Text Effect */
+    /* Zero-Lag Static Metallic 24K Gold Foil Text */
     .gold-foil-text {
-      background: linear-gradient(to right, #d4af37 0%, #fff6b7 25%, #aa771c 50%, #fff6b7 75%, #d4af37 100%);
-      background-size: 200% auto;
+      background: linear-gradient(180deg, #fff8c9 0%, #facc15 45%, #b38728 95%);
       color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
-      animation: foilShimmer 4s linear infinite;
     }
 
-    /* Divine Glowing Text for Shree Ganeshay Namah */
+    /* Static Crisp Divine Glow (No CPU Repaint Lag) */
     .divine-glow-text {
       color: #fef08a;
-      text-shadow:
-        0 0 8px rgba(250, 204, 21, 0.95),
-        0 0 18px rgba(234, 179, 8, 0.8),
-        0 0 32px rgba(202, 138, 4, 0.6),
-        0 2px 4px rgba(0, 0, 0, 0.9);
-      animation: pulseGlow 2.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseGlow {
-      0% {
-        text-shadow:
-          0 0 8px rgba(250, 204, 21, 0.85),
-          0 0 16px rgba(234, 179, 8, 0.65),
-          0 0 28px rgba(202, 138, 4, 0.45);
-      }
-      100% {
-        text-shadow:
-          0 0 14px rgba(254, 240, 138, 1),
-          0 0 28px rgba(250, 204, 21, 0.95),
-          0 0 45px rgba(234, 179, 8, 0.85);
-      }
-    }
-
-    @keyframes foilShimmer {
-      to { background-position: 200% center; }
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.8), 0 0 22px rgba(202, 138, 4, 0.55);
     }
 
     .gold-foil-bg {
       background: var(--gold-gradient);
-      background-size: 200% auto;
-      animation: foilShimmer 6s linear infinite;
     }
 
+    /* Solid Royal Card (Zero backdrop-filter lag on phones) */
     .ornate-card {
-      background: radial-gradient(circle at top, rgba(104, 16, 26, 0.6) 0%, rgba(20, 2, 4, 0.94) 100%);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(165deg, #3c080f 0%, #190205 100%);
       border: 1px solid rgba(212, 175, 55, 0.45);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(212, 175, 55, 0.14);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
     }
 
-    /* Realistic Velvet Texture & 3D Double Door Gate */
-    .gate-Scene {
-      perspective: 2000px;
-    }
-
-    .velvet-texture {
-      background-image: 
-        radial-gradient(rgba(212, 175, 55, 0.07) 1px, transparent 0),
-        radial-gradient(rgba(0, 0, 0, 0.35) 1px, transparent 0);
-      background-size: 24px 24px;
-      background-position: 0 0, 12px 12px;
+    /* =====================================================
+       ROYAL GATE LAYOUT & GPU-ACCELERATED DOOR ANIMATION
+    ====================================================== */
+    .gate-door-left,
+    .gate-door-right {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(circle at center, #520a13 0%, #1b0205 100%);
+      will-change: transform, opacity;
+      transition: transform 1.15s cubic-bezier(0.33, 1, 0.68, 1), opacity 1.15s ease;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
     }
 
     .gate-door-left {
-      transform-origin: left center;
-      transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.8s ease;
-      background: 
-        radial-gradient(circle at 85% 50%, rgba(120, 18, 30, 0.95) 0%, rgba(55, 6, 12, 0.98) 55%, rgba(22, 2, 5, 1) 100%);
-      box-shadow: inset -12px 0 35px rgba(0,0,0,0.9), inset 0 0 60px rgba(0,0,0,0.75), 15px 0 50px rgba(0,0,0,0.95);
+      border-right: 2px solid rgba(212, 175, 55, 0.8);
+      box-shadow: inset -10px 0 25px rgba(0, 0, 0, 0.85);
+      /* Reserves inner 18vw for the Center Wheel so the Left Arch NEVER collides */
+      padding-left: clamp(8px, 3vw, 44px);
+      padding-right: clamp(54px, 18vw, 155px);
     }
 
     .gate-door-right {
-      transform-origin: right center;
-      transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.8s ease;
-      background: 
-        radial-gradient(circle at 15% 50%, rgba(120, 18, 30, 0.95) 0%, rgba(55, 6, 12, 0.98) 55%, rgba(22, 2, 5, 1) 100%);
-      box-shadow: inset 12px 0 35px rgba(0,0,0,0.9), inset 0 0 60px rgba(0,0,0,0.75), -15px 0 50px rgba(0,0,0,0.95);
+      border-left: 2px solid rgba(212, 175, 55, 0.8);
+      box-shadow: inset 10px 0 25px rgba(0, 0, 0, 0.85);
+      /* Reserves inner 18vw for the Center Wheel so the Right Arch NEVER collides */
+      padding-left: clamp(54px, 18vw, 155px);
+      padding-right: clamp(8px, 3vw, 44px);
     }
 
+    /* Silky Smooth 60FPS Door Parting on Any Phone */
     .gate-open .gate-door-left {
-      transform: rotateY(-115deg);
+      transform: translate3d(-102%, 0, 0);
       opacity: 0;
     }
     .gate-open .gate-door-right {
-      transform: rotateY(115deg);
+      transform: translate3d(102%, 0, 0);
       opacity: 0;
     }
     .gate-open .gate-seal {
-      transform: scale(1.5);
+      transform: translate3d(0, 0, 0) scale(1.18);
       opacity: 0;
       pointer-events: none;
     }
 
-    /* Rotating Center Chakra / Mandala Wheels */
+    /* Proportional Side Jharokha Arch Panel */
+    .door-arch-panel {
+      width: clamp(74px, 24vw, 210px);
+      height: clamp(145px, 36vh, 300px);
+      background: linear-gradient(180deg, rgba(88, 11, 20, 0.9) 0%, rgba(24, 3, 6, 0.96) 100%);
+      border: 1.5px solid rgba(212, 175, 55, 0.55);
+      border-top-left-radius: 9999px;
+      border-top-right-radius: 9999px;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Proportional Center Rotating Chakra Wheel Container */
+    .center-wheel-box {
+      width: clamp(118px, 32vw, 255px);
+      height: clamp(118px, 32vw, 255px);
+    }
+
+    .center-inner-chakra {
+      width: clamp(92px, 25vw, 198px);
+      height: clamp(92px, 25vw, 198px);
+    }
+
+    .center-medallion {
+      width: clamp(76px, 20.5vw, 160px);
+      height: clamp(76px, 20.5vw, 160px);
+    }
+
+    /* Pure GPU Rotation Animations (Zero Repaint) */
     @keyframes rotateCW {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from { transform: rotate(0deg) translateZ(0); }
+      to { transform: rotate(360deg) translateZ(0); }
     }
     @keyframes rotateCCW {
-      from { transform: rotate(360deg); }
-      to { transform: rotate(0deg); }
+      from { transform: rotate(360deg) translateZ(0); }
+      to { transform: rotate(0deg) translateZ(0); }
     }
     .spin-cw-slow {
-      animation: rotateCW 28s linear infinite;
+      animation: rotateCW 26s linear infinite;
+      will-change: transform;
     }
     .spin-ccw-med {
       animation: rotateCCW 18s linear infinite;
+      will-change: transform;
     }
     .spin-cw-fast {
-      animation: rotateCW 12s linear infinite;
-    }
-
-    /* Background Watermark Mandala */
-    @keyframes spinWatermark {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-    .spin-mandala {
-      animation: spinWatermark 60s linear infinite;
+      animation: rotateCW 14s linear infinite;
+      will-change: transform;
     }
 
     /* Swaying Temple Bells / Hanging Diyas */
     @keyframes sway {
-      0%, 100% { transform: rotate(-2.5deg); }
-      50% { transform: rotate(2.5deg); }
+      0%, 100% { transform: rotate(-2.5deg) translateZ(0); }
+      50% { transform: rotate(2.5deg) translateZ(0); }
     }
     .sway-bell {
       transform-origin: top center;
-      animation: sway 3.8s ease-in-out infinite;
+      animation: sway 3.6s ease-in-out infinite;
+      will-change: transform;
     }
 
     /* Flickering Diya Flame */
     @keyframes flicker {
-      0%, 100% { transform: scaleY(1) scaleX(1) rotate(-1deg); opacity: 0.92; }
-      50% { transform: scaleY(1.16) scaleX(0.9) rotate(2deg); opacity: 1; }
+      0% { transform: scaleY(1) scaleX(1) translateZ(0); }
+      100% { transform: scaleY(1.14) scaleX(0.92) translateZ(0); }
     }
     .diya-flame {
       transform-origin: bottom center;
-      animation: flicker 0.35s ease-in-out infinite alternate;
+      animation: flicker 0.4s ease-in-out infinite alternate;
+      will-change: transform;
     }
 
     /* Scroll Reveal Animations */
     .reveal-up {
       opacity: 0;
-      transform: translateY(35px) scale(0.97);
-      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translate3d(0, 24px, 0);
+      transition: opacity 0.65s ease-out, transform 0.65s ease-out;
     }
     .reveal-up.active {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translate3d(0, 0, 0);
     }
 
     .jharokha-frame {
-      border-top-left-radius: 140px;
-      border-top-right-radius: 140px;
-    }
-
-    /* Embossed Door Arch Panel */
-    .door-arch-panel {
-      background: radial-gradient(circle at center, rgba(95, 12, 22, 0.75) 0%, rgba(25, 3, 6, 0.92) 100%);
-      border: 1.5px solid rgba(212, 175, 55, 0.55);
-      box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.85),
-        inset 0 0 25px rgba(212, 175, 55, 0.18),
-        0 0 18px rgba(212, 175, 55, 0.15);
+      border-top-left-radius: 130px;
+      border-top-right-radius: 130px;
     }
 
     ::-webkit-scrollbar { width: 5px; }
@@ -244,59 +239,52 @@
 <body class="gate-locked antialiased selection:bg-gold-500 selection:text-royal-950">
 
   <!-- ==========================================
-       INTERACTIVE 60FPS GOLD PARTICLE CANVAS
+       ROYAL VELVET DOUBLE-DOOR GATE (COLLISION-FREE ON ALL SCREENS)
   =========================================== -->
-  <canvas id="goldCanvas" class="fixed inset-0 pointer-events-none z-40"></canvas>
-
-  <!-- ==========================================
-       3D ROYAL VELVET DOUBLE-DOOR GATE (RESPONSIVE)
-  =========================================== -->
-  <div id="royalGate" class="gate-Scene fixed inset-0 z-50 flex items-center justify-center overflow-hidden select-none">
+  <div id="royalGate" class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden select-none bg-royal-950">
     
     <!-- ================= LEFT VELVET DOOR ================= -->
-    <div class="gate-door-left velvet-texture w-1/2 h-full border-r-[3px] border-gold-500/80 relative flex items-center justify-end overflow-hidden">
-      
+    <div class="gate-door-left flex items-center justify-center">
       <!-- Outer Double Gold Filigree Frame -->
-      <div class="absolute inset-2 sm:inset-5 border-2 border-gold-500/40 pointer-events-none"></div>
-      <div class="absolute inset-3.5 sm:inset-7 border border-dashed border-gold-400/25 pointer-events-none"></div>
+      <div class="absolute inset-2 sm:inset-4 border-2 border-gold-500/40 pointer-events-none"></div>
+      <div class="absolute inset-3 sm:inset-6 border border-dashed border-gold-400/25 pointer-events-none"></div>
 
       <!-- Ornate Corner Jaali Brackets -->
-      <svg class="absolute top-3 left-3 sm:top-6 sm:left-6 w-10 h-10 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z" opacity="0.85"/>
+      <svg class="absolute top-2.5 left-2.5 sm:top-5 sm:left-5 w-8 h-8 sm:w-20 sm:h-20 text-gold-400/75 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z"/>
         <circle cx="28" cy="28" r="6"/><circle cx="48" cy="18" r="3.5"/><circle cx="18" cy="48" r="3.5"/>
       </svg>
-      <svg class="absolute bottom-3 left-3 sm:bottom-6 sm:left-6 w-10 h-10 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scaleY(-1);" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z" opacity="0.85"/>
+      <svg class="absolute bottom-2.5 left-2.5 sm:bottom-5 sm:left-5 w-8 h-8 sm:w-20 sm:h-20 text-gold-400/75 pointer-events-none" style="transform: scaleY(-1);" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z"/>
         <circle cx="28" cy="28" r="6"/><circle cx="48" cy="18" r="3.5"/><circle cx="18" cy="48" r="3.5"/>
       </svg>
 
-      <!-- LEFT DOOR AUSPICIOUS JHAROKHA PANEL (Fluid Sizing) -->
-      <div class="door-arch-panel rounded-t-full rounded-b-xl w-[42vw] max-w-[220px] py-4 sm:py-6 px-1.5 sm:px-4 flex flex-col items-center justify-between relative mr-1 sm:mr-3">
-        <!-- Inner Arch Trim -->
+      <!-- LEFT DOOR AUSPICIOUS JHAROKHA PANEL (Auto-Scaled, Never Collides) -->
+      <div class="door-arch-panel py-2.5 sm:py-5 px-1.5 sm:px-4 flex flex-col items-center justify-between relative">
         <div class="absolute inset-1 rounded-t-full rounded-b-lg border border-dashed border-gold-400/30 pointer-events-none"></div>
 
         <!-- Hanging Swaying Brass Diya -->
-        <div class="sway-bell flex flex-col items-center -mt-2 mb-1">
-          <div class="w-0.5 h-3 sm:h-6 bg-gold-400/70"></div>
-          <svg class="w-6 h-6 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" viewBox="0 0 64 64">
+        <div class="sway-bell flex flex-col items-center -mt-1.5">
+          <div class="w-0.5 h-2.5 sm:h-5 bg-gold-400/70"></div>
+          <svg class="w-5 h-5 sm:w-9 sm:h-9" viewBox="0 0 64 64">
             <path class="diya-flame" d="M32 8 C27 18, 26 25, 32 31 C38 25, 37 18, 32 8 Z" fill="#fde047"/>
             <path class="diya-flame" d="M32 14 C29 20, 29 24, 32 29 C35 24, 35 20, 32 14 Z" fill="#ffffff"/>
             <path d="M14 34 Q32 40 50 34 C46 48, 39 52, 32 52 C25 52, 18 48, 14 34 Z" fill="#d4af37"/>
           </svg>
         </div>
 
-        <!-- Auspicious "SHUBH" Plaque -->
-        <div class="text-center my-0.5">
-          <svg class="w-5 h-5 sm:w-7 sm:h-7 mx-auto text-gold-400 mb-0.5 drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Auspicious "SHUBH" & Swastika -->
+        <div class="text-center">
+          <svg class="w-4 h-4 sm:w-6 sm:h-6 mx-auto text-gold-400 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 3v18M3 12h18M12 3h7M12 21H5M21 12v7M3 12V5"/>
             <circle cx="7.5" cy="7.5" r="1" fill="currentColor"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor"/>
             <circle cx="7.5" cy="16.5" r="1" fill="currentColor"/><circle cx="16.5" cy="16.5" r="1" fill="currentColor"/>
           </svg>
-          <span class="font-serif text-[10px] sm:text-base font-bold gold-foil-text tracking-[0.2em] block">॥ SHUBH ॥</span>
+          <span class="font-serif text-[8px] sm:text-sm md:text-base font-bold gold-foil-text tracking-[0.15em] block leading-tight">॥ SHUBH ॥</span>
         </div>
 
-        <!-- Mangal Kalash & Lotus Motif -->
-        <svg class="w-10 h-10 sm:w-20 sm:h-20 text-gold-400 my-1 drop-shadow-[0_0_10px_rgba(212,175,55,0.35)]" viewBox="0 0 100 100" fill="currentColor">
+        <!-- Mangal Kalash -->
+        <svg class="w-8 h-8 sm:w-16 sm:h-16 text-gold-400" viewBox="0 0 100 100" fill="currentColor">
           <path d="M50 10 C42 18, 43 28, 50 32 C57 28, 58 18, 50 10 Z" fill="#fde047"/>
           <path d="M48 30 C32 22, 20 28, 18 38 C28 36, 38 34, 48 34 Z" opacity="0.85"/>
           <path d="M52 30 C68 22, 80 28, 82 38 C72 36, 62 34, 52 34 Z" opacity="0.85"/>
@@ -306,56 +294,54 @@
           <path d="M32 80 L68 80 L74 88 L26 88 Z" fill="#fef08a"/>
         </svg>
 
-        <div class="w-full pt-1.5 border-t border-gold-500/30 flex items-center justify-center text-gold-300/80">
-          <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.18em]">Mangal Parinay</span>
+        <div class="w-full pt-1 border-t border-gold-500/30 text-center">
+          <span class="text-[6px] sm:text-[9px] uppercase tracking-[0.14em] text-gold-300/80 block">Mangal Parinay</span>
         </div>
       </div>
     </div>
 
     <!-- ================= RIGHT VELVET DOOR ================= -->
-    <div class="gate-door-right velvet-texture w-1/2 h-full border-l-[3px] border-gold-500/80 relative flex items-center justify-start overflow-hidden">
-      
+    <div class="gate-door-right flex items-center justify-center">
       <!-- Outer Double Gold Filigree Frame -->
-      <div class="absolute inset-2 sm:inset-5 border-2 border-gold-500/40 pointer-events-none"></div>
-      <div class="absolute inset-3.5 sm:inset-7 border border-dashed border-gold-400/25 pointer-events-none"></div>
+      <div class="absolute inset-2 sm:inset-4 border-2 border-gold-500/40 pointer-events-none"></div>
+      <div class="absolute inset-3 sm:inset-6 border border-dashed border-gold-400/25 pointer-events-none"></div>
 
       <!-- Ornate Corner Jaali Brackets -->
-      <svg class="absolute top-3 right-3 sm:top-6 sm:right-6 w-10 h-10 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scaleX(-1);" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z" opacity="0.85"/>
+      <svg class="absolute top-2.5 right-2.5 sm:top-5 sm:right-5 w-8 h-8 sm:w-20 sm:h-20 text-gold-400/75 pointer-events-none" style="transform: scaleX(-1);" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z"/>
         <circle cx="28" cy="28" r="6"/><circle cx="48" cy="18" r="3.5"/><circle cx="18" cy="48" r="3.5"/>
       </svg>
-      <svg class="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 w-10 h-10 sm:w-24 sm:h-24 text-gold-400/70 pointer-events-none" style="transform: scale(-1, -1);" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z" opacity="0.85"/>
+      <svg class="absolute bottom-2.5 right-2.5 sm:bottom-5 sm:right-5 w-8 h-8 sm:w-20 sm:h-20 text-gold-400/75 pointer-events-none" style="transform: scale(-1, -1);" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M0 0 L100 0 L100 12 L25 12 C18 28, 28 45, 12 60 L12 100 L0 100 Z"/>
         <circle cx="28" cy="28" r="6"/><circle cx="48" cy="18" r="3.5"/><circle cx="18" cy="48" r="3.5"/>
       </svg>
 
-      <!-- RIGHT DOOR AUSPICIOUS JHAROKHA PANEL (Fluid Sizing) -->
-      <div class="door-arch-panel rounded-t-full rounded-b-xl w-[42vw] max-w-[220px] py-4 sm:py-6 px-1.5 sm:px-4 flex flex-col items-center justify-between relative ml-1 sm:ml-3">
-        <!-- Inner Arch Trim -->
+      <!-- RIGHT DOOR AUSPICIOUS JHAROKHA PANEL (Auto-Scaled, Never Collides) -->
+      <div class="door-arch-panel py-2.5 sm:py-5 px-1.5 sm:px-4 flex flex-col items-center justify-between relative">
         <div class="absolute inset-1 rounded-t-full rounded-b-lg border border-dashed border-gold-400/30 pointer-events-none"></div>
 
         <!-- Hanging Swaying Brass Diya -->
-        <div class="sway-bell flex flex-col items-center -mt-2 mb-1" style="animation-delay: -1.9s;">
-          <div class="w-0.5 h-3 sm:h-6 bg-gold-400/70"></div>
-          <svg class="w-6 h-6 sm:w-10 sm:h-10 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" viewBox="0 0 64 64">
+        <div class="sway-bell flex flex-col items-center -mt-1.5" style="animation-delay: -1.8s;">
+          <div class="w-0.5 h-2.5 sm:h-5 bg-gold-400/70"></div>
+          <svg class="w-5 h-5 sm:w-9 sm:h-9" viewBox="0 0 64 64">
             <path class="diya-flame" d="M32 8 C27 18, 26 25, 32 31 C38 25, 37 18, 32 8 Z" fill="#fde047"/>
             <path class="diya-flame" d="M32 14 C29 20, 29 24, 32 29 C35 24, 35 20, 32 14 Z" fill="#ffffff"/>
             <path d="M14 34 Q32 40 50 34 C46 48, 39 52, 32 52 C25 52, 18 48, 14 34 Z" fill="#d4af37"/>
           </svg>
         </div>
 
-        <!-- Auspicious "LABH" Plaque -->
-        <div class="text-center my-0.5">
-          <svg class="w-5 h-5 sm:w-7 sm:h-7 mx-auto text-gold-400 mb-0.5 drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Auspicious "LABH" & Swastika -->
+        <div class="text-center">
+          <svg class="w-4 h-4 sm:w-6 sm:h-6 mx-auto text-gold-400 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 3v18M3 12h18M12 3h7M12 21H5M21 12v7M3 12V5"/>
             <circle cx="7.5" cy="7.5" r="1" fill="currentColor"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor"/>
             <circle cx="7.5" cy="16.5" r="1" fill="currentColor"/><circle cx="16.5" cy="16.5" r="1" fill="currentColor"/>
           </svg>
-          <span class="font-serif text-[10px] sm:text-base font-bold gold-foil-text tracking-[0.2em] block">॥ LABH ॥</span>
+          <span class="font-serif text-[8px] sm:text-sm md:text-base font-bold gold-foil-text tracking-[0.15em] block leading-tight">॥ LABH ॥</span>
         </div>
 
-        <!-- Mangal Kalash & Lotus Motif -->
-        <svg class="w-10 h-10 sm:w-20 sm:h-20 text-gold-400 my-1 drop-shadow-[0_0_10px_rgba(212,175,55,0.35)]" viewBox="0 0 100 100" fill="currentColor">
+        <!-- Mangal Kalash -->
+        <svg class="w-8 h-8 sm:w-16 sm:h-16 text-gold-400" viewBox="0 0 100 100" fill="currentColor">
           <path d="M50 10 C42 18, 43 28, 50 32 C57 28, 58 18, 50 10 Z" fill="#fde047"/>
           <path d="M48 30 C32 22, 20 28, 18 38 C28 36, 38 34, 48 34 Z" opacity="0.85"/>
           <path d="M52 30 C68 22, 80 28, 82 38 C72 36, 62 34, 52 34 Z" opacity="0.85"/>
@@ -365,48 +351,41 @@
           <path d="M32 80 L68 80 L74 88 L26 88 Z" fill="#fef08a"/>
         </svg>
 
-        <div class="w-full pt-1.5 border-t border-gold-500/30 flex items-center justify-center text-gold-300/80">
-          <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.18em]">Shubh Muhurat</span>
+        <div class="w-full pt-1 border-t border-gold-500/30 text-center">
+          <span class="text-[6px] sm:text-[9px] uppercase tracking-[0.14em] text-gold-300/80 block">Shubh Muhurat</span>
         </div>
       </div>
     </div>
 
-    <!-- ================= CENTRAL ROTATING CHAKRA & ROYAL SEAL (AUTO-SCALING) ================= -->
-    <div id="openSealBtn" class="gate-seal absolute z-20 flex flex-col items-center justify-center cursor-pointer transition-all duration-700 group px-2 text-center w-full max-w-sm">
+    <!-- ================= CENTRAL ROTATING CHAKRA & ROYAL SEAL ================= -->
+    <div id="openSealBtn" class="gate-seal absolute z-20 flex flex-col items-center justify-between cursor-pointer transition-all duration-700 group py-4 px-2">
       
-      <!-- GLOWING SHREE GANESHAY NAMAH BANNER -->
-      <div class="mb-3 sm:mb-5 flex flex-col items-center">
-        <div class="relative flex items-center justify-center mb-1">
-          <div class="w-10 h-10 rounded-full bg-gold-400/25 blur-md absolute animate-pulse"></div>
-          <svg class="w-8 h-8 sm:w-10 sm:h-10 text-gold-300 relative z-10 drop-shadow-[0_0_12px_rgba(250,204,21,0.9)]" viewBox="0 0 64 64" fill="currentColor">
-            <path d="M32 4 L24 18 L40 18 Z"/>
-            <path d="M20 20 L44 20 L42 25 L22 25 Z"/>
-            <path d="M20 27 C10 25, 8 38, 18 42 C16 36, 18 30, 22 29 Z" opacity="0.85"/>
-            <path d="M44 27 C54 25, 56 38, 46 42 C48 36, 46 30, 42 29 Z" opacity="0.85"/>
-            <path d="M25 27 C25 42, 28 52, 38 52 C42 52, 42 47, 38 47 C34 47, 34 38, 39 27 Z"/>
-            <line x1="29" y1="30" x2="35" y2="30" stroke="#460a10" stroke-width="2"/>
-            <line x1="29" y1="33" x2="35" y2="33" stroke="#460a10" stroke-width="2"/>
-            <circle cx="32" cy="24" r="1.8" fill="#ef4444"/>
-          </svg>
-        </div>
+      <!-- 1. TOP: GLOWING SHREE GANESHAY NAMAH BANNER -->
+      <div class="flex flex-col items-center mb-3 sm:mb-6">
+        <svg class="w-7 h-7 sm:w-10 sm:h-10 text-gold-300 mb-1" viewBox="0 0 64 64" fill="currentColor">
+          <path d="M32 4 L24 18 L40 18 Z"/>
+          <path d="M20 20 L44 20 L42 25 L22 25 Z"/>
+          <path d="M20 27 C10 25, 8 38, 18 42 C16 36, 18 30, 22 29 Z" opacity="0.85"/>
+          <path d="M44 27 C54 25, 56 38, 46 42 C48 36, 46 30, 42 29 Z" opacity="0.85"/>
+          <path d="M25 27 C25 42, 28 52, 38 52 C42 52, 42 47, 38 47 C34 47, 34 38, 39 27 Z"/>
+          <circle cx="32" cy="24" r="1.8" fill="#ef4444"/>
+        </svg>
 
-        <div class="px-4 py-1.5 sm:px-6 sm:py-2 rounded-full bg-royal-950/95 border-2 border-gold-400/80 shadow-[0_0_25px_rgba(250,204,21,0.45)] flex items-center gap-2">
-          <span class="text-gold-400 text-xs">❖</span>
-          <span class="font-serif text-[11px] sm:text-sm md:text-base font-bold tracking-[0.18em] divine-glow-text uppercase">
+        <div class="px-3.5 py-1 sm:px-6 sm:py-1.5 rounded-full bg-royal-950 border-2 border-gold-400/85 shadow-[0_0_20px_rgba(250,204,21,0.4)] flex items-center gap-1.5 sm:gap-2.5">
+          <span class="text-gold-400 text-[10px] sm:text-xs">❖</span>
+          <span class="font-serif text-[9px] sm:text-sm md:text-base font-bold tracking-[0.16em] divine-glow-text uppercase whitespace-nowrap">
             ॥ Shree Ganeshay Namah ॥
           </span>
-          <span class="text-gold-400 text-xs">❖</span>
+          <span class="text-gold-400 text-[10px] sm:text-xs">❖</span>
         </div>
       </div>
       
-      <!-- CENTER FLUID ROTATING WHEEL + MEDALLION -->
-      <div class="relative w-[55vw] h-[55vw] max-w-[240px] max-h-[240px] sm:max-w-[280px] sm:max-h-[280px] flex items-center justify-center my-1">
+      <!-- 2. CENTER: DUAL-ROTATING CHAKRA WHEEL & MEDALLION (32vw max 255px) -->
+      <div class="center-wheel-box relative flex items-center justify-center my-1 sm:my-2">
         
-        <div class="absolute inset-2 rounded-full bg-gold-500/20 blur-xl pointer-events-none"></div>
-
-        <!-- Outer Rotating Wheel -->
-        <svg class="spin-cw-slow absolute inset-0 w-full h-full text-gold-400/75 drop-shadow-[0_0_12px_rgba(212,175,55,0.45)] pointer-events-none" viewBox="0 0 200 200" fill="none" stroke="currentColor">
-          <circle cx="100" cy="100" r="96" stroke-width="1" stroke-dasharray="4 4"/>
+        <!-- RING 1: Outer Rotating 16-Petal Surya Mandala Wheel (Clockwise) -->
+        <svg class="spin-cw-slow absolute inset-0 w-full h-full text-gold-400/80 pointer-events-none" viewBox="0 0 200 200" fill="none" stroke="currentColor">
+          <circle cx="100" cy="100" r="96" stroke-width="1.2" stroke-dasharray="4 4"/>
           <circle cx="100" cy="100" r="90" stroke-width="1.5"/>
           <circle cx="100" cy="100" r="76" stroke-width="1" stroke-dasharray="2 3"/>
           <g stroke-width="1.2">
@@ -414,59 +393,43 @@
             <path d="M100 196 L106 178 L100 184 L94 178 Z" fill="currentColor"/>
             <path d="M4 100 L22 106 L16 100 L22 94 Z" fill="currentColor"/>
             <path d="M196 100 L178 106 L184 100 L178 94 Z" fill="currentColor"/>
-            <line x1="100" y1="10" x2="100" y2="190" stroke-opacity="0.45"/>
-            <line x1="10" y1="100" x2="190" y2="100" stroke-opacity="0.45"/>
+            <path d="M32 32 L48 40 L40 40 L40 48 Z" fill="currentColor"/>
+            <path d="M168 32 L152 40 L160 40 L160 48 Z" fill="currentColor"/>
+            <path d="M32 168 L48 160 L40 160 L40 152 Z" fill="currentColor"/>
+            <path d="M168 168 L152 160 L160 160 L160 152 Z" fill="currentColor"/>
+            <line x1="100" y1="10" x2="100" y2="190" stroke-opacity="0.4"/>
+            <line x1="10" y1="100" x2="190" y2="100" stroke-opacity="0.4"/>
             <rect x="42" y="42" width="116" height="116" rx="8" stroke-opacity="0.5"/>
             <rect x="42" y="42" width="116" height="116" rx="8" transform="rotate(45 100 100)" stroke-opacity="0.5"/>
           </g>
         </svg>
 
-        <!-- Counter-Rotating Inner Chakra -->
-        <svg class="spin-ccw-med absolute w-[42vw] h-[42vw] max-w-[180px] max-h-[180px] text-gold-300/80 pointer-events-none" viewBox="0 0 160 160" fill="none" stroke="currentColor">
+        <!-- RING 2: Middle Counter-Rotating Geometric Chakra (Counter-Clockwise) -->
+        <svg class="spin-ccw-med center-inner-chakra absolute text-gold-300/85 pointer-events-none" viewBox="0 0 160 160" fill="none" stroke="currentColor">
           <circle cx="80" cy="80" r="74" stroke-width="2" stroke-dasharray="8 6"/>
-          <polygon points="80,8 98,62 152,80 98,98 80,152 62,98 8,80 62,62" stroke-width="1.2" fill="rgba(212,175,55,0.06)"/>
+          <polygon points="80,8 98,62 152,80 98,98 80,152 62,98 8,80 62,62" stroke-width="1.2" fill="rgba(212,175,55,0.08)"/>
           <polygon points="80,8 98,62 152,80 98,98 80,152 62,98 8,80 62,62" stroke-width="1.2" transform="rotate(45 80 80)"/>
         </svg>
 
-        <!-- CENTER MEDALLION -->
-        <div class="relative w-[34vw] h-[34vw] max-w-[140px] max-h-[140px] sm:max-w-[160px] sm:max-h-[160px] rounded-full gold-foil-bg p-1 shadow-[0_0_40px_rgba(212,175,55,0.75)] group-hover:scale-105 transition-transform duration-300 flex items-center justify-center z-10">
+        <!-- CENTER ROYAL MEDALLION -->
+        <div class="center-medallion relative rounded-full gold-foil-bg p-1 sm:p-1.5 shadow-[0_0_30px_rgba(212,175,55,0.65)] group-hover:scale-105 transition-transform duration-300 flex items-center justify-center z-10">
           <div class="w-full h-full rounded-full bg-royal-950 flex flex-col items-center justify-center p-2 text-center relative overflow-hidden">
-            <div class="spin-cw-fast absolute inset-1 rounded-full border-2 border-dashed border-gold-400/90 pointer-events-none"></div>
+            <div class="spin-cw-fast absolute inset-1 rounded-full border-2 border-dashed border-gold-400/85 pointer-events-none"></div>
             
-            <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.25em] text-gold-300/90 mb-0.5">Shubh Vivah</span>
-            <span class="font-serif text-xl sm:text-2xl font-bold gold-foil-text tracking-wider drop-shadow">A &amp; K</span>
-            <span class="w-8 h-px bg-gold-400/60 my-1"></span>
-            <span class="text-[9px] sm:text-[11px] font-body italic text-gold-200 tracking-widest">13 . 12 . 2026</span>
+            <span class="text-[6px] sm:text-[9px] uppercase tracking-[0.2em] text-gold-300/90 mb-0.5">Shubh Vivah</span>
+            <span class="font-serif text-base sm:text-3xl font-bold gold-foil-text tracking-wider leading-none">A &amp; K</span>
+            <span class="w-6 sm:w-12 h-px bg-gold-400/60 my-1"></span>
+            <span class="text-[8px] sm:text-xs font-body italic text-gold-200 tracking-wider">13 . 12 . 2026</span>
           </div>
         </div>
-
       </div>
 
-      <!-- Tap Instruction Button -->
-      <div class="mt-4 px-5 py-2 rounded-full bg-royal-950/95 border-2 border-gold-400/70 shadow-[0_0_20px_rgba(0,0,0,0.9)] flex items-center gap-2 group-hover:border-gold-300 transition-all">
-        <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
-        <span class="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-gold-200 font-semibold">Tap Royal Seal to Open</span>
+      <!-- 3. BOTTOM: TAP ROYAL SEAL TO OPEN BUTTON -->
+      <div class="mt-3 sm:mt-6 px-4 py-1.5 sm:px-6 sm:py-2.5 rounded-full bg-royal-950 border-2 border-gold-400/75 shadow-lg flex items-center gap-2 group-hover:border-gold-300 transition-colors">
+        <span class="w-2 h-2 rounded-full bg-gold-400"></span>
+        <span class="text-[9px] sm:text-xs uppercase tracking-[0.2em] text-gold-200 font-semibold whitespace-nowrap">Tap Royal Seal to Open</span>
       </div>
     </div>
-  </div>
-
-  <!-- ==========================================
-       SPINNING BACKGROUND MANDALA WATERMARK
-  =========================================== -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <svg class="spin-mandala absolute top-1/2 left-1/2 w-[550px] h-[550px] sm:w-[850px] sm:h-[850px] text-gold-500/[0.06]" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="0.5">
-      <circle cx="100" cy="100" r="95"/><circle cx="100" cy="100" r="80" stroke-dasharray="3 3"/>
-      <circle cx="100" cy="100" r="65"/><circle cx="100" cy="100" r="50" stroke-dasharray="2 2"/>
-      <circle cx="100" cy="100" r="35"/>
-      <g>
-        <ellipse cx="100" cy="50" rx="12" ry="45"/><ellipse cx="100" cy="150" rx="12" ry="45"/>
-        <ellipse cx="50" cy="100" rx="45" ry="12"/><ellipse cx="150" cy="100" rx="45" ry="12"/>
-        <ellipse cx="100" cy="50" rx="12" ry="45" transform="rotate(45 100 100)"/>
-        <ellipse cx="100" cy="150" rx="12" ry="45" transform="rotate(45 100 100)"/>
-        <ellipse cx="50" cy="100" rx="45" ry="12" transform="rotate(45 100 100)"/>
-        <ellipse cx="150" cy="100" rx="45" ry="12" transform="rotate(45 100 100)"/>
-      </g>
-    </svg>
   </div>
 
   <!-- ==========================================
@@ -475,16 +438,16 @@
   <section class="relative min-h-screen flex flex-col items-center justify-center px-3 py-10 sm:p-6 z-10">
     
     <!-- Hanging Swaying Temple Bells (Top Corners) -->
-    <div class="fixed top-0 left-4 sm:left-12 z-20 pointer-events-none sway-bell">
-      <svg class="w-8 h-24 sm:w-10 sm:h-32 text-gold-400/70 drop-shadow-lg" viewBox="0 0 40 120" fill="currentColor">
+    <div class="fixed top-0 left-3 sm:left-10 z-20 pointer-events-none sway-bell">
+      <svg class="w-7 h-20 sm:w-10 sm:h-32 text-gold-400/70" viewBox="0 0 40 120" fill="currentColor">
         <line x1="20" y1="0" x2="20" y2="70" stroke="currentColor" stroke-width="2"/>
         <circle cx="20" cy="30" r="4"/><circle cx="20" cy="50" r="3"/>
         <path d="M8 90 C8 72, 32 72, 32 90 L36 96 L4 96 Z"/>
         <circle cx="20" cy="99" r="3"/>
       </svg>
     </div>
-    <div class="fixed top-0 right-4 sm:right-12 z-20 pointer-events-none sway-bell" style="animation-delay: -1.7s;">
-      <svg class="w-8 h-24 sm:w-10 sm:h-32 text-gold-400/70 drop-shadow-lg" viewBox="0 0 40 120" fill="currentColor">
+    <div class="fixed top-0 right-3 sm:right-10 z-20 pointer-events-none sway-bell" style="animation-delay: -1.8s;">
+      <svg class="w-7 h-20 sm:w-10 sm:h-32 text-gold-400/70" viewBox="0 0 40 120" fill="currentColor">
         <line x1="20" y1="0" x2="20" y2="70" stroke="currentColor" stroke-width="2"/>
         <circle cx="20" cy="30" r="4"/><circle cx="20" cy="50" r="3"/>
         <path d="M8 90 C8 72, 32 72, 32 90 L36 96 L4 96 Z"/>
@@ -494,17 +457,14 @@
 
     <!-- Main Royal Jharokha Invitation Frame -->
     <div class="ornate-card jharokha-frame relative w-full max-w-xl px-5 pt-14 pb-10 sm:px-12 sm:pt-20 sm:pb-14 text-center border-2 border-gold-500/60">
-      
-      <!-- Inner Gold Filigree Outline -->
       <div class="jharokha-frame absolute inset-2.5 border border-dashed border-gold-400/35 pointer-events-none"></div>
 
-      <!-- Auspicious Crest & Invocation -->
       <div class="relative z-10">
-        <!-- Ornate Lotus/Kalash Crest SVG -->
-        <svg class="w-12 h-12 mx-auto text-gold-400 mb-2 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]" viewBox="0 0 64 64" fill="currentColor">
+        <!-- Ornate Lotus Crest SVG -->
+        <svg class="w-11 h-11 mx-auto text-gold-400 mb-2" viewBox="0 0 64 64" fill="currentColor">
           <path d="M32 8 C28 18, 18 22, 18 32 C18 40, 24 44, 32 44 C40 44, 46 40, 46 32 C46 22, 36 18, 32 8 Z M12 34 C10 44, 18 48, 28 48 L36 48 C46 48, 54 44, 52 34 C46 40, 40 42, 32 42 C24 42, 18 40, 12 34 Z M20 52 L44 52 L40 58 L24 58 Z"/>
         </svg>
-        <p class="font-serif text-xs sm:text-base tracking-[0.25em] uppercase divine-glow-text font-bold mb-6">
+        <p class="font-serif text-xs sm:text-base tracking-[0.22em] uppercase divine-glow-text font-bold mb-6">
           ॥ Shree Ganeshay Namah ॥
         </p>
 
@@ -512,27 +472,26 @@
           With the blessings of the Almighty &amp; our beloved parents, we cordially invite you to celebrate the auspicious wedding of
         </p>
 
-        <!-- Groom & Bride Names in Shimmering 24K Gold Foil -->
-        <div class="my-6 sm:my-8 relative">
-          <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold gold-foil-text tracking-wide drop-shadow-md">
+        <div class="my-6 sm:my-8">
+          <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold gold-foil-text tracking-wide">
             Arun Kumar
           </h1>
           
           <div class="flex items-center justify-center gap-3 my-3 sm:my-4">
             <span class="w-12 sm:w-20 h-px bg-gradient-to-r from-transparent to-gold-400"></span>
-            <span class="px-3 py-1 rounded-full border border-gold-400/50 bg-royal-900/80 font-body italic text-gold-300 text-sm sm:text-base">
+            <span class="px-3 py-1 rounded-full border border-gold-400/50 bg-royal-900 font-body italic text-gold-300 text-sm sm:text-base">
               weds
             </span>
             <span class="w-12 sm:w-20 h-px bg-gradient-to-l from-transparent to-gold-400"></span>
           </div>
 
-          <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold gold-foil-text tracking-wide drop-shadow-md">
+          <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold gold-foil-text tracking-wide">
             Kirti
           </h1>
         </div>
 
         <!-- Royal Date Ribbon -->
-        <div class="mt-8 mb-4 inline-flex items-center gap-3 sm:gap-6 px-5 py-2.5 sm:px-8 sm:py-3 rounded-full bg-royal-950/90 border border-gold-500/60 shadow-inner">
+        <div class="mt-8 mb-4 inline-flex items-center gap-3 sm:gap-6 px-5 py-2.5 sm:px-8 sm:py-3 rounded-full bg-royal-950 border border-gold-500/60">
           <span class="text-xs sm:text-sm uppercase tracking-[0.2em] text-gold-300">Sunday</span>
           <span class="text-gold-500">•</span>
           <span class="font-serif text-base sm:text-xl font-bold text-white tracking-widest">13 DEC 2026</span>
@@ -547,7 +506,7 @@
     </div>
 
     <!-- Scroll Down Indicator -->
-    <a href="#countdownSection" class="mt-6 flex flex-col items-center text-gold-300/70 hover:text-gold-300 transition-colors">
+    <a href="#countdownSection" class="mt-6 flex flex-col items-center text-gold-300/75 hover:text-gold-300 transition-colors">
       <span class="text-[10px] uppercase tracking-[0.3em] mb-1">Scroll for Ceremonies</span>
       <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
     </a>
@@ -556,7 +515,7 @@
   <!-- ==========================================
        2. ROYAL COUNTDOWN (STRICT 4-IN-A-ROW ON MOBILE)
   =========================================== -->
-  <section id="countdownSection" class="py-16 sm:py-24 px-3 sm:px-6 relative z-10 border-t border-gold-500/20 bg-royal-900/40">
+  <section id="countdownSection" class="py-16 sm:py-24 px-3 sm:px-6 relative z-10 border-t border-gold-500/20 bg-royal-900/30">
     <div class="max-w-4xl mx-auto text-center">
       <div class="reveal-up mb-10">
         <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-gold-400 block mb-2">The Auspicious Muhurat</span>
@@ -591,7 +550,7 @@
       <div class="mt-8 reveal-up">
         <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Arun+%26+Kirti%27s+Wedding+Celebration&dates=20261213T133000Z/20261213T183000Z&details=Join+us+to+celebrate+the+wedding+of+Arun+Kumar+and+Kirti+at+Karan+Vatika,+New+Delhi.&location=Karan+Vatika,+Lawn+No.+2,+Rishal+Garden,+Najafgarh-Nangloi+Road,+New+Delhi+110041" 
            target="_blank" 
-           class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-400/60 bg-royal-950/80 hover:bg-gold-500 hover:text-royal-950 text-gold-200 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all shadow-lg">
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold-400/60 bg-royal-950 hover:bg-gold-500 hover:text-royal-950 text-gold-200 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-colors shadow-lg">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           Save Date to Calendar
         </a>
@@ -600,7 +559,7 @@
   </section>
 
   <!-- ==========================================
-       3. SCROLL-ANIMATED WEDDING JOURNEY (TIMELINE)
+       3. WEDDING JOURNEY (TIMELINE)
   =========================================== -->
   <section id="timelineSection" class="py-16 sm:py-24 px-4 sm:px-6 relative z-10">
     <div class="max-w-4xl mx-auto">
@@ -610,16 +569,14 @@
         <p class="font-body italic text-base sm:text-lg text-gold-200/70">Sunday, 13th December 2026</p>
       </div>
 
-      <div class="relative" id="timelineContainer">
-        <!-- Background Track Line -->
-        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gold-500/20 md:-translate-x-1/2"></div>
-        <!-- Dynamic Scroll-Filled Liquid Gold Line -->
-        <div id="timelineProgress" class="absolute left-6 md:left-1/2 top-0 w-0.5 gold-foil-bg md:-translate-x-1/2 shadow-[0_0_12px_#facc15] transition-all duration-150" style="height: 0%;"></div>
+      <div class="relative">
+        <!-- Vertical Gold Line -->
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-500/20 via-gold-400 to-gold-500/20 md:-translate-x-1/2"></div>
 
         <!-- Event 1: Baraat Swagat -->
         <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between mb-12 sm:mb-16 pl-16 md:pl-0 reveal-up">
           <div class="w-full md:w-[44%] md:text-right">
-            <div class="ornate-card p-5 sm:p-7 rounded-2xl hover:border-gold-300 transition-all">
+            <div class="ornate-card p-5 sm:p-7 rounded-2xl">
               <span class="inline-block px-3 py-1 rounded-full bg-gold-500/20 border border-gold-400/40 text-gold-300 text-xs font-bold tracking-widest uppercase mb-2">7:00 PM</span>
               <h3 class="font-serif text-xl sm:text-2xl text-white font-bold mb-2">Baraat Swagat</h3>
               <p class="text-gold-100/75 text-sm sm:text-base font-light leading-relaxed">
@@ -627,17 +584,16 @@
               </p>
             </div>
           </div>
-          <!-- Node Icon -->
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-royal-900 border-2 border-gold-400 text-gold-300 flex items-center justify-center shadow-[0_0_20px_rgba(250,204,21,0.4)] z-10">
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-royal-900 border-2 border-gold-400 text-gold-300 flex items-center justify-center z-10">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
           </div>
           <div class="hidden md:block w-[44%]"></div>
         </div>
 
-        <!-- Event 2: Jaimala / Varmala -->
+        <!-- Event 2: Varmala -->
         <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center justify-between mb-12 sm:mb-16 pl-16 md:pl-0 reveal-up">
           <div class="w-full md:w-[44%] md:text-left">
-            <div class="ornate-card p-5 sm:p-7 rounded-2xl hover:border-gold-300 transition-all">
+            <div class="ornate-card p-5 sm:p-7 rounded-2xl">
               <span class="inline-block px-3 py-1 rounded-full bg-gold-500/20 border border-gold-400/40 text-gold-300 text-xs font-bold tracking-widest uppercase mb-2">9:00 PM</span>
               <h3 class="font-serif text-xl sm:text-2xl text-white font-bold mb-2">Varmala Ceremony</h3>
               <p class="text-gold-100/75 text-sm sm:text-base font-light leading-relaxed">
@@ -645,17 +601,16 @@
               </p>
             </div>
           </div>
-          <!-- Node Icon -->
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-royal-900 border-2 border-gold-400 text-gold-300 flex items-center justify-center shadow-[0_0_20px_rgba(250,204,21,0.4)] z-10">
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-royal-900 border-2 border-gold-400 text-gold-300 flex items-center justify-center z-10">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
           </div>
           <div class="hidden md:block w-[44%]"></div>
         </div>
 
-        <!-- Event 3: Phere & Grand Feast -->
+        <!-- Event 3: Phere & Dinner -->
         <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between pl-16 md:pl-0 reveal-up">
           <div class="w-full md:w-[44%] md:text-right">
-            <div class="ornate-card p-5 sm:p-7 rounded-2xl hover:border-gold-300 transition-all">
+            <div class="ornate-card p-5 sm:p-7 rounded-2xl">
               <span class="inline-block px-3 py-1 rounded-full bg-gold-500/20 border border-gold-400/40 text-gold-300 text-xs font-bold tracking-widest uppercase mb-2">10:30 PM Onwards</span>
               <h3 class="font-serif text-xl sm:text-2xl text-white font-bold mb-2">Shubh Phere &amp; Dinner</h3>
               <p class="text-gold-100/75 text-sm sm:text-base font-light leading-relaxed">
@@ -663,8 +618,7 @@
               </p>
             </div>
           </div>
-          <!-- Node Icon -->
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-royal-900 border-2 border-gold-400 text-gold-300 flex items-center justify-center shadow-[0_0_20px_rgba(250,204,21,0.4)] z-10">
+          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-royal-900 border-2 border-gold-400 text-gold-300 flex items-center justify-center z-10">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c0 0-6 6.8-6 13a6 6 0 0 0 12 0c0-6.2-6-13-6-13zm0 16a3 3 0 0 1-3-3c0-2.5 3-5.5 3-5.5s3 3 3 5.5a3 3 0 0 1-3 3z"/></svg>
           </div>
           <div class="hidden md:block w-[44%]"></div>
@@ -676,7 +630,7 @@
   <!-- ==========================================
        4. VENUE & ROYAL GUEST CONCIERGE
   =========================================== -->
-  <section class="py-16 sm:py-24 px-4 sm:px-6 relative z-10 border-t border-gold-500/20 bg-royal-900/30">
+  <section class="py-16 sm:py-24 px-4 sm:px-6 relative z-10 border-t border-gold-500/20 bg-royal-900/25">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12 sm:mb-16 reveal-up">
         <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-gold-400 block mb-2">Atithi Devo Bhava</span>
@@ -697,7 +651,7 @@
           </div>
           
           <a href="https://maps.google.com/?cid=13762507825252838880" target="_blank" 
-             class="gold-foil-bg text-royal-950 font-bold text-xs sm:text-sm uppercase tracking-wider py-3.5 px-6 rounded-xl inline-flex items-center justify-center gap-2 shadow-lg hover:scale-[1.02] transition-transform">
+             class="gold-foil-bg text-royal-950 font-bold text-xs sm:text-sm uppercase tracking-wider py-3.5 px-6 rounded-xl inline-flex items-center justify-center gap-2 shadow-lg">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             Get Directions on Google Maps
           </a>
@@ -740,21 +694,17 @@
     <div class="max-w-5xl mx-auto">
       
       <!-- Interactive "Light an Auspicious Diya" Feature -->
-      <div class="ornate-card rounded-3xl p-6 sm:p-10 mb-14 text-center reveal-up border-gold-400/50">
+      <div class="ornate-card rounded-3xl p-6 sm:p-10 mb-14 text-center reveal-up">
         <p class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-gold-300 mb-2">Interactive Blessing</p>
         <h3 class="font-serif text-2xl sm:text-3xl gold-foil-text font-bold mb-3">Light an Auspicious Diya</h3>
         <p class="text-gold-100/75 text-xs sm:text-sm max-w-md mx-auto mb-6 font-light">
-          Tap the Diya below to light a sacred flame and send warm vibrations to Arun &amp; Kirti.
+          Tap the Diya below to light a sacred flame and send warm blessings to Arun &amp; Kirti.
         </p>
 
-        <!-- Animated SVG Diya -->
         <button id="lightDiyaBtn" class="group relative inline-flex flex-col items-center justify-center focus:outline-none">
-          <div id="diyaGlow" class="w-28 h-28 rounded-full bg-gold-400/20 blur-xl absolute -top-2 transition-all duration-700 opacity-40"></div>
-          <svg class="w-24 h-24 relative z-10 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100">
-            <!-- Flame -->
-            <path id="diyaFlamePath" class="diya-flame" d="M50 15 C42 28, 40 38, 50 46 C60 38, 58 28, 50 15 Z" fill="#facc15"/>
+          <svg class="w-20 h-20 sm:w-24 sm:h-24 relative z-10 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100">
+            <path class="diya-flame" d="M50 15 C42 28, 40 38, 50 46 C60 38, 58 28, 50 15 Z" fill="#facc15"/>
             <path class="diya-flame" d="M50 24 C46 32, 45 38, 50 44 C55 38, 54 32, 50 24 Z" fill="#fff"/>
-            <!-- Diya Clay Bowl -->
             <path d="M20 50 Q50 58 80 50 C75 72, 62 80, 50 80 C38 80, 25 72, 20 50 Z" fill="#b45309" stroke="#facc15" stroke-width="2"/>
             <path d="M28 58 Q50 64 72 58" fill="none" stroke="#fde047" stroke-width="1.5"/>
           </svg>
@@ -782,14 +732,14 @@
             <div>
               <label class="block text-xs uppercase tracking-wider text-gold-200/80 mb-1.5">Your Name / Family</label>
               <input type="text" id="guestName" required placeholder="e.g. Sharma Family" 
-                     class="w-full px-4 py-3 rounded-xl bg-royal-950/90 border border-gold-500/40 text-white placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-300">
+                     class="w-full px-4 py-3 rounded-xl bg-royal-950 border border-gold-500/40 text-white placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-300">
             </div>
             <div>
               <label class="block text-xs uppercase tracking-wider text-gold-200/80 mb-1.5">Your Message</label>
               <textarea id="guestMessage" rows="3" required placeholder="Wishing Arun & Kirti a lifetime of happiness..." 
-                        class="w-full px-4 py-3 rounded-xl bg-royal-950/90 border border-gold-500/40 text-white placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-300 resize-none"></textarea>
+                        class="w-full px-4 py-3 rounded-xl bg-royal-950 border border-gold-500/40 text-white placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-300 resize-none"></textarea>
             </div>
-            <button type="submit" class="w-full py-3.5 rounded-xl gold-foil-bg text-royal-950 font-bold text-xs sm:text-sm uppercase tracking-widest shadow-lg hover:scale-[1.01] transition-transform">
+            <button type="submit" class="w-full py-3.5 rounded-xl gold-foil-bg text-royal-950 font-bold text-xs sm:text-sm uppercase tracking-widest shadow-lg">
               Post Aashirwad
             </button>
           </form>
@@ -829,93 +779,22 @@
   </footer>
 
   <!-- ==========================================
-       INTERACTIVE SCRIPTS & PARTICLE ENGINE
+       ULTRA-LIGHTWEIGHT SCRIPTS (ZERO LAG)
   =========================================== -->
   <script>
-    // 1. 3D ROYAL GATE OPENING + PARTICLE BURST
+    // 1. SMOOTH 60FPS GATE OPENING
     const royalGate = document.getElementById('royalGate');
     const openSealBtn = document.getElementById('openSealBtn');
 
     openSealBtn.addEventListener('click', () => {
       royalGate.classList.add('gate-open');
       document.body.classList.remove('gate-locked');
-      burstGoldParticles(window.innerWidth / 2, window.innerHeight / 2, 85);
       setTimeout(() => {
         royalGate.style.display = 'none';
-      }, 1750);
+      }, 1150);
     });
 
-    // 2. HTML5 CANVAS 24K GOLD DUST & MARIGOLD PETAL ENGINE
-    const canvas = document.getElementById('goldCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor(x, y, isBurst = false) {
-        this.x = x ?? Math.random() * canvas.width;
-        this.y = y ?? Math.random() * canvas.height;
-        this.size = isBurst ? Math.random() * 4.2 + 2 : Math.random() * 2.5 + 0.8;
-        this.speedX = isBurst ? (Math.random() - 0.5) * 9 : (Math.random() - 0.5) * 0.5;
-        this.speedY = isBurst ? (Math.random() - 0.5) * 9 : Math.random() * 0.7 + 0.2;
-        this.alpha = Math.random() * 0.8 + 0.2;
-        this.isBurst = isBurst;
-        this.color = Math.random() > 0.25 ? '#facc15' : '#fb923c';
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.isBurst) {
-          this.alpha -= 0.014;
-        } else {
-          if (this.y > canvas.height) {
-            this.y = -10;
-            this.x = Math.random() * canvas.width;
-          }
-        }
-      }
-      draw() {
-        if (this.alpha <= 0) return;
-        ctx.save();
-        ctx.globalAlpha = Math.max(0, this.alpha);
-        ctx.fillStyle = this.color;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#facc15';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    for (let i = 0; i < 50; i++) {
-      particles.push(new Particle());
-    }
-
-    function burstGoldParticles(x, y, count = 40) {
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle(x, y, true));
-      }
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles = particles.filter(p => p.alpha > 0);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // 3. LIVE COUNTDOWN TIMER (13 DEC 2026, 7:00 PM)
+    // 2. LIVE COUNTDOWN TIMER (13 DEC 2026, 7:00 PM)
     const targetDate = new Date('2026-12-13T19:00:00').getTime();
     function updateCountdown() {
       const now = new Date().getTime();
@@ -928,32 +807,22 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // 4. SCROLL-DRAWN LIQUID GOLD TIMELINE & REVEALS
+    // 3. SCROLL REVEAL OBSERVER
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
-    window.addEventListener('scroll', () => {
-      const container = document.getElementById('timelineContainer');
-      const progress = document.getElementById('timelineProgress');
-      if (!container || !progress) return;
-      const rect = container.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const percentage = Math.min(100, Math.max(0, ((windowHeight * 0.65 - rect.top) / rect.height) * 100));
-      progress.style.height = percentage + '%';
-    });
-
-    // 5. INTERACTIVE DIYA LIGHTING
+    // 4. INTERACTIVE DIYA COUNTER
     let diyaCount = parseInt(localStorage.getItem('ak_diya_count') || '108', 10);
     const diyaCountEl = document.getElementById('diyaCount');
     const lightDiyaBtn = document.getElementById('lightDiyaBtn');
-    const diyaGlow = document.getElementById('diyaGlow');
     const diyaBtnText = document.getElementById('diyaBtnText');
     diyaCountEl.innerText = diyaCount;
 
@@ -961,20 +830,16 @@
       diyaCount++;
       localStorage.setItem('ak_diya_count', diyaCount);
       diyaCountEl.innerText = diyaCount;
-      diyaGlow.classList.remove('opacity-40');
-      diyaGlow.classList.add('opacity-100', 'scale-150');
       diyaBtnText.innerText = 'Aashirwad Sent! 🙏';
-      const rect = lightDiyaBtn.getBoundingClientRect();
-      burstGoldParticles(rect.left + rect.width / 2, rect.top + 30, 45);
     });
 
-    // 6. BLESSING WALL WITH LOCAL STORAGE PERSISTENCE
+    // 5. BLESSING WALL WITH LOCAL STORAGE
     const blessingForm = document.getElementById('blessingForm');
     const blessingContainer = document.getElementById('blessingContainer');
 
     function createBlessingCard(name, message) {
       const card = document.createElement('div');
-      card.className = 'ornate-card p-5 rounded-2xl transition-all duration-500';
+      card.className = 'ornate-card p-5 rounded-2xl';
       const initial = name.trim().charAt(0).toUpperCase();
       card.innerHTML = `
         <p class="font-body italic text-base sm:text-lg text-gold-100 leading-relaxed mb-4">"${message}"</p>
@@ -1003,7 +868,6 @@
       savedBlessings.push({ name, message });
       localStorage.setItem('ak_blessings', JSON.stringify(savedBlessings));
 
-      burstGoldParticles(window.innerWidth / 2, window.innerHeight * 0.7, 40);
       nameInput.value = '';
       messageInput.value = '';
     });
